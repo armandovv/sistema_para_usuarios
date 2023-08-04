@@ -17,7 +17,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     padding: 1.5em;
-}
+   
 .logo{
     text-align: center;
     font-size: 3em;
@@ -31,14 +31,17 @@ body{
     box-shadow: 0 0 20px 0 rgba(255,255,255,.3);
     
 }
+    
+}
 
 .contact-wrapper > * {
     padding: 1em;
+    border-radius: 2%;
 }
 
 
 .contact-form {
-    background-color: #222222;
+    background-color: #460e8a;
 }
 
 .contact-form form p{

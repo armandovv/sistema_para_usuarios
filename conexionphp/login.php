@@ -33,28 +33,20 @@ if (!$conn)
 			$fila = $query->fetch_row();
 	
 			/* la columna cuatro corresponde con la columna del nombre completo */
-			$nombreusuario = $fila[1];
+			$nameuser = $fila[1];
 	
 			/* Podrías guardarlo como variable de sesión */
-			$_SESSION['nombreusuario'] = $nombreusuario;
+			$_SESSION['nameuser'] = $nameuser;
 	
 			/* liberar el conjunto de resultados */
-			echo'<center>';
-			echo'<div style=" border-color: gray; border-style: solid; border-radius:5px;
-			border-width: 1px; width:500; height:370;
-			-webkit-box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);
-box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);">';
 			
-			echo '<h3>BIENVENIDO ',strtoupper($nombreusuario),' </h3>';
+			echo '<h3>BIENVENIDO ',strtoupper($nameuser),' </h3>';
 			
-			echo'<img src="../images/7efs.gif" width="350" height="280">';
 			
-			echo"<a href='../paginas/general.php'><button style='border-width: 6px; border-radius:14%; background-color: #3C66F4; border-color:#F5F7F9; border-style:double;width:90; height:36; color:white'>aceptar</button></a>";
 			
-			echo'</div>';
-			echo'</center>';
-
+			echo"<a href='../paginashtml/main.php'><button style='border-width: 6px; border-radius:14%; background-color: #3C66F4; border-color:#F5F7F9; border-style:double;width:90; height:36; color:white'>aceptar</button></a>";
+			
+			
 		}
 			
 			
@@ -68,7 +60,7 @@ box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);">';
 		else {
 			echo '<script>alert("CONTRASEÑA INCORRECTA")</script> ';
 		
-			echo "<script>location.href='../index.html'</script>";
+			echo "<script>location.href='../login.html'</script>";
 		}
 	
 	
