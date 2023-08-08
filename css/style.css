@@ -13,7 +13,7 @@ color: rgb(245, 250, 238);
 
 }
 .mb-3 .card-body{
-    background-color: rgb(3, 42, 38);
+    background-color: rgb(52, 130, 122);
 }
 .mb-3 .card-body .card-title{
 
@@ -36,7 +36,7 @@ color: rgb(245, 250, 238);
 }
 .card-group .card .card-body{
 
-    background-color: rgb(3, 71, 46);
+    background-color: rgb(52, 138, 128);
 }
 
 .card-group .card .card-img-top{
@@ -46,13 +46,17 @@ color: rgb(245, 250, 238);
 .card .card-body .card-text{
 
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(233, 218, 224);
+    color: rgb(235, 243, 222);
 }
 .card .card-body .card-title{
 
-    color: rgb(160, 209, 138);
+    color: rgb(209, 232, 176);
 }
 
+.text-center .card-body{
+
+    background-color: darkslategray;
+}
 
    
    

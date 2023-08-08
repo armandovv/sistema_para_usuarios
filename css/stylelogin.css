@@ -1,7 +1,10 @@
 body{
-    background-image: url('../images/depositphotos_204832466-stock-photo-flying-colombian-pesos-isolated-with.jpg');
+    background-image: url('../images/6I225DHJLVDQ5HJABFC4APVJ4E.jpeg');
 	background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
+    background-size: cover;
+    backdrop-filter: blur(7px);
     color: white;
     font-family: 'Montserrat', sans-serif;
     padding: 0 1.5em;
@@ -41,7 +44,10 @@ body{
 
 
 .contact-form {
-    background-color: #460e8a;
+    background-color: #17305d;
+    -webkit-box-shadow: -14px -13px 10px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: -14px -13px 10px -3px rgba(0,0,0,0.75);
+box-shadow: -14px -13px 10px -3px rgba(0,0,0,0.75);
 }
 
 .contact-form form p{

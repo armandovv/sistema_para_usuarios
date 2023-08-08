@@ -27,7 +27,7 @@ $mysqli->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
-    <link rel="stylesheet" type="text/css" href="../css/stylemain.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/styleupdate.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
@@ -75,68 +75,18 @@ $_SESSION["nameuser"];?>
     </div>
   </div>
 </nav>
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../images/AHORRO-1024x576.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../images/ahorros-monedas-economia-dinero2shut-1509241795.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../images/importancia-dinero-efectivo.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>
-<div class="row">
-  <div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Movimientos</h5>
-        <form action="../conexionphp/mostrarmovimientos.php" method="post">
-        <p class="card-text"></p>
+<form action="../conexionphp/actualizaremail.php" method="post">
+<div class="input-group mb-3">
+    
+  <input type="text" class="form-control" name="email" id="email" placeholder="Nuevo correo electronico" aria-label="Recipient's username" aria-describedby="button-addon2" required>
+  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Actualizar</button>
+</div></form>
+<form action="../conexionphp/actualizartel.php" method="post">
+<div class="input-group mb-3">
 
-        <button type="submit" class="btn btn-primary">Consultar</button>
-</form>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <form action="../conexionphp/mostrarmovimientosxmes.php" method="post">
-        <h5 class="card-title">Movimientos por mes</h5>
-        <p class="card-text"> <select name="fecha" class="fecha" id="month" style="color:#0ba842 ;"  width="30" required>
-        <option value="">-----Seleccione mes-----</option>
-                    <option value="1">Enero</option>
-                    <option value="2">Febrero</option>
-                    <option value="3">Marzo</option>
-                    <option value="4">Abril</option>
-                    <option value="5">Mayo</option>
-                    <option value="6">Junio</option>
-                    <option value="7">Julio</option>
-                    <option value="8">Agosto</option>
-                     <option value="9">Septiembre</option>
-                     <option value="10">Octubre</option>
-                     <option value="11">Noviembre</option>
-                     <option value="12">Diciembre</option>
-                    </select></p>
-
-        <button type="submit" class="btn btn-primary">Consultar</button> 
-</form>
-      </div>
-    </div>
-  </div>
-</div>
+  <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Nuevo numero de telefono" aria-label="Recipient's username" aria-describedby="button-addon2"required>
+  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Actualizar</button>
+</div></form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
 </body>
