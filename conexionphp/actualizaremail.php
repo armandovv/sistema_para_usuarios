@@ -15,7 +15,8 @@ $email= $_POST['email'];
 $sql="update login_usuario inner join usuarios on usuarios.documento= login_usuario.id set email= '".$email."' where '".$_SESSION['id']."' and  nombres='".$_SESSION['nameuser']."' ";
 
 $mysqli->query($sql);
-echo "Email actualizado!!! </br>";
+echo "<script>alert('SE ACTUALIZO EL EMAIL')</script>";
+echo "<script>location.href='perfil.php'</script>";
 }
 $mysqli->close();
 echo"<a href='./perfil.php'>VOLVER</a>";

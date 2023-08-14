@@ -4,3 +4,9 @@
     max-width: 600px;
     padding-top: 20px;
 }
+.navbar-expand-lg .container-fluid .navbar-collapse .navbar-nav .nav-link:hover{
+    cursor: pointer;
+ background: #a1a29d;
+ border-color: blue;
+
+  }

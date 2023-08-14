@@ -21,8 +21,8 @@ padding-left: 30px;
     border:none;
 }
 form .btn-primary{
-  
-    background-color: #b70e21;
+ 
+    background-color: #e03246;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
@@ -30,3 +30,9 @@ form .btn-primary{
     letter-spacing: .1em;
     border-radius: .3em;
 }
+.navbar-expand-lg .container-fluid .navbar-collapse .navbar-nav .nav-link:hover{
+    cursor: pointer;
+ background: #a1a29d;
+ border-color: blue;
+
+  }

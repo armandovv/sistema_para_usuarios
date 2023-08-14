@@ -1,4 +1,20 @@
+.navbar-expand-lg .container-fluid{
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    background: rgb(30, 116, 148);
+    position:fixed;
+   top: 0;
+    cursor: default;
+  }
+  .navbar-expand-lg .container-fluid .navbar-nav:hover{
+    cursor: pointer;
+ background: #CDDC39;
 
+  }
+
+  
 h6{
    color: 'aliceblue';
     float:left;

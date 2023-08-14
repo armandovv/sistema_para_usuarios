@@ -15,7 +15,8 @@ $telefono= $_POST['telefono'];
 $sql="update login_usuario inner join usuarios on usuarios.documento= login_usuario.id set telefono= '".$telefono."' where '".$_SESSION['id']."' and  nombres='".$_SESSION['nameuser']."' ";
 
 $mysqli->query($sql);
-echo "Se actualizo el telefono</br>";
+echo "<script>alert('SE ACTUALIZO NUMERO DE TELEFONO')</script>";
+echo "<script>location.href='perfil.php'</script>";
 }
 $mysqli->close();
 echo"<a href='./perfil.php'>VOLVER</a>";
