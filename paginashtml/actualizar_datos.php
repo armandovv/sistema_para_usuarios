@@ -51,7 +51,7 @@ $mysqli->close();
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="formpagos.php"><img src="../images/pago-por-clic.png"  alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> Pagos</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -61,7 +61,7 @@ $_SESSION["nameuser"];?>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../conexionphp/perfil.php">Perfil</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="formpass.php">Cambiar contraseña</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../conexionphp/logout.php">Cerrar sesion</a></li>
           </ul>

@@ -1,0 +1,19 @@
+.navbar-expand-lg .container-fluid .navbar-collapse .navbar-nav .nav-link:hover{
+    cursor: pointer;
+ background: #a1a29d;
+ border-color: blue;
+
+  }
+
+  .input-group div{
+padding-left: 20px;
+    max-width: 600px;
+  }
+  .mb-3{
+    padding-left: 20px;
+    max-width: 510px;
+  }
+  form .btn-secondary{
+    padding-left: 20px;
+    max-width: 600px;
+  }

@@ -26,8 +26,8 @@ $mysqli->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principal</title>
-    <link rel="stylesheet" type="text/css" href="../css/stylemain.css"/>
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/stylepay.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
@@ -51,7 +51,7 @@ $mysqli->close();
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link"href="formpagos.php"><img src="../images/pago-por-clic.png"  alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> Pagos</a>
+          <a class="nav-link"href="pagos.php"><img src="../images/pago-por-clic.png"  alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> Pagos</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -75,69 +75,35 @@ $_SESSION["nameuser"];?>
     </div>
   </div>
 </nav>
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../images/AHORRO-1024x576.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../images/ahorros-monedas-economia-dinero2shut-1509241795.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../images/importancia-dinero-efectivo.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+<h2>Pagos</h2>
+<form action="../conexionphp/pagos.php" method="post">
+<div class="input-group">
+  <input type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION["id"];?>">
+    <div>
+  <span class="input-group-text">Fecha</span>
+  <input type="date" name="fecha" id="fecha" aria-label="First name" class="form-control" required>
 </div>
-<h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>
-<div class="row">
-  <div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Movimientos</h5>
-        <form action="../conexionphp/mostrarmovimientos.php" method="post">
-        <p class="card-text"></p>
-
-        <button type="submit" class="btn btn-primary">Consultar</button>
-</form>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <form action="../conexionphp/mostrarmovimientosxmes.php" method="post">
-        <h5 class="card-title">Movimientos por mes</h5>
-        <p class="card-text"> <select name="fecha" class="fecha" id="month" style="color:#0ba842 ;"  width="30" required>
-        <option value="">-----Seleccione mes-----</option>
-                    <option value="1">Enero</option>
-                    <option value="2">Febrero</option>
-                    <option value="3">Marzo</option>
-                    <option value="4">Abril</option>
-                    <option value="5">Mayo</option>
-                    <option value="6">Junio</option>
-                    <option value="7">Julio</option>
-                    <option value="8">Agosto</option>
-                     <option value="9">Septiembre</option>
-                     <option value="10">Octubre</option>
-                     <option value="11">Noviembre</option>
-                     <option value="12">Diciembre</option>
-                    </select></p>
-
-        <button type="submit" class="btn btn-primary">Consultar</button> 
-</form>
-      </div>
-    </div>
-  </div>
+<input type="hidden" name="valor_a_ahorrar" id="valor_a_ahorrar">
+ <div>
+  <span class="input-group-text">Valor a pagar</span>
+  <input type="text" name="valor_a_retirar" id="valor_a_retirar" aria-label="First name" class="form-control" required>
+ </div>
+</div><br>
+ <div class="input-group mb-3">
+  <label class="input-group-text" for="inputGroupSelect01">Concepto</label>
+  <select class="form-select" id="concepto" name="concepto" required>
+    <option value="">Seleccione ...</option>
+    <option value="prestamo">Prestamo express</option>
+    <option value="pago servicios">servicios hogar</option>
+   
+  </select>
+  <div>
+  <button type="submit" class="btn btn-secondary">PAGAR</button>
+</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>     
 </body>
 </html>

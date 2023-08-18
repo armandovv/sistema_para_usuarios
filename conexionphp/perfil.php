@@ -16,16 +16,15 @@ $result=mysqli_query($mysqli, $sql);
 if($result->num_rows > 0){
     while ($mostrar=mysqli_fetch_array($result)){
     
-echo"<table>";
-echo'<tr><td><img src="../images/User_icon_2.svg.png" width="300" height="300"></td>';
-echo"<td><h3>",'Nombres: ' ,$mostrar['nombres']."</h3>";
-echo"<h3>",'Documento: ' ,$mostrar['documento']."</h3>";
-echo"<h3>",'Email: ' ,$mostrar['email']. "</h3>";
-echo"<h3>",'Telefono: ' ,$mostrar['telefono']. "</h3></td></tr>";
-echo'<tr><td><center><a href="../paginashtml/actualizar_datos.php"><input type="button" value="Actualizar informacion"></a><br>';
-echo'<a href="../paginashtml/main.php">VOLVER</a></center></td></tr>';
-echo"</table>";
-
+        echo"<table>";
+        echo'<tr><td><img src="../images/User_icon_2.svg.png" width="200" height="200"></td></tr>';
+        echo"<td><h3>",'Nombres: ' ,$mostrar['nombres']."</h3>";
+        echo"<h3>",'Documento: ' ,$mostrar['documento']."</h3>";
+        echo"<h3>",'Email: ' ,$mostrar['email']. "</h3>";
+        echo"<h3>",'Telefono: ' ,$mostrar['telefono']. "</h3></td></tr>";
+        echo'<tr><td><center><a href="../paginashtml/actualizar_datos.php"><input type="button" value="Actualizar informacion"></a><br>';
+        echo'<a href="../paginashtml/main.php">VOLVER</a></center></td></tr>';
+        echo"</table>";
     }
 
 
