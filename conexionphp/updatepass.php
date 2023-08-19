@@ -15,7 +15,7 @@ if (!$conn)
 
 
 	
-	$query =mysqli_query ($conn,"select *from login_usuario where contraseña = '".$contraseña."'");
+	$query =mysqli_query ($conn,"select id, contraseña from login_usuario where id = '".$id."'");
 	$nr= mysqli_num_rows($query);
 	if ($nr!=1)
 	{ echo '<script>alert("LA CONTRASEÑA ACTUAL INGRESADA NO CORRESPONDE A SU CLAVE ACTUAL")</script> ';

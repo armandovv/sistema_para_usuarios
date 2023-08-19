@@ -43,6 +43,9 @@ if(pasActual.length=="0"){
 if(pasNew1!= pasNew2){
 alert("CAMPO CONTRASEÑA NUEVA Y CAMPO CONFIRMACION NO COINCIDEN");
 document.getElementById("nueva").focus();
+document.getElementById("nueva").value="";
+document.getElementById("confirm").value="";
+
 return false;
 } else{
   

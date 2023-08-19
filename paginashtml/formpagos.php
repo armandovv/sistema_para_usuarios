@@ -51,7 +51,7 @@ $mysqli->close();
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link"href="pagos.php"><img src="../images/pago-por-clic.png"  alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> Pagos</a>
+          <a class="nav-link"href="formpagos.php"><img src="../images/pago-por-clic.png"  alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> Pagos</a>
         </li>
         <li class="nav-item dropdown">
           <a
