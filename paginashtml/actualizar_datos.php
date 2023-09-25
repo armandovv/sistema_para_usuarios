@@ -33,7 +33,7 @@ $mysqli->close();
 <body>
 <nav class="navbar navbar-expand-lg bg-body-secondary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="main.php"><img src="../images/d2c08eac3a7faa0dabc1b8a33d7ea598-silueta-de-icono-plano-de-inicio-web.png" alt=""width="40" height="40" class="d-inline-block align-text-top"></a>
+    <a class="navbar-brand" href="main.php"><img src="../images/hogar.png" alt=""width="40" height="40" class="d-inline-block align-text-top"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -77,7 +77,7 @@ $_SESSION["nameuser"];?>
 </nav>
 <form action="../conexionphp/actualizaremail.php" method="post">
 <div class="input-group mb-3">
-    
+<input type="hidden" name="documento" id="documento" value="<?php echo $_SESSION["id"];?>">
   <input type="text" class="form-control" name="email" id="email" placeholder="Nuevo correo electronico" aria-label="Recipient's username" aria-describedby="button-addon2" required>
   <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Actualizar</button>
 </div></form>

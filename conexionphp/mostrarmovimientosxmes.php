@@ -1,4 +1,5 @@
-<div id='cualquier'>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"><div id='cualquier'>
 
 <?php
 session_start();
@@ -39,8 +40,18 @@ echo "<table border=1>";
 	
 }  
 echo "</table>";
+$fecha = $_POST['fecha'];
+$sql = "select distinct month(fecha) from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2023 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+setlocale(LC_ALL, 'spanish');
+$monthNum  = $fecha;
+$dateObj   = DateTime::createFromFormat('!m', $monthNum);
+$monthName = strftime('%B', $dateObj->getTimestamp());
 
-echo'<CENTER><H4>MOVIMIENTOS POR MES</H4></center>';
+
+
+
+echo"<CENTER><H4>",'MOVIMIENTOS ' ,strtoupper($monthName). "</H4></center>";
+
 echo'<center><table border=1>';
 echo'<th width=200 bgcolor="blue">ID MOVIMIENTO</th>';
 echo'<th width=200 bgcolor="blue">FECHA</th>';
@@ -67,7 +78,7 @@ echo "</table>";
 
 }
  }
-else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES '.$fecha.'")</script> ';
+else { echo' <script>alert("NO HAY MOVIMIENTOS PARA  '.strtoupper($monthName).'")</script> ';
 	echo "<script>location.href='../paginashtml/main.php'</script>";
 }
    }
@@ -88,4 +99,4 @@ else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES '.$fecha.'")</script>
 	ventimp.close();
 	}
 	</script>	</center>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  

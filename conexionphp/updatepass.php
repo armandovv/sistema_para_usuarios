@@ -15,9 +15,9 @@ if (!$conn)
 
 
 	
-	$query =mysqli_query ($conn,"select id, contraseña from login_usuario where id = '".$id."'");
+	$query =mysqli_query ($conn,"select *from login_usuario where id = '".$id."' and contraseña='".$contraseña."'");
 	$nr= mysqli_num_rows($query);
-	if ($nr!=1)
+	if ($nr<1)
 	{ echo '<script>alert("LA CONTRASEÑA ACTUAL INGRESADA NO CORRESPONDE A SU CLAVE ACTUAL")</script> ';
 		
         echo "<script>location.href='../paginashtml/formpass.php'</script>";

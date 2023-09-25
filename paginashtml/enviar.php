@@ -26,27 +26,9 @@ $mysqli->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="../css/stylepay.css"/>
+    <title>Principal</title>
+    <link rel="stylesheet" type="text/css" href="../css/stylemain.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <script type="text/javascript" language="javascript">
-  function confirmar(){
-			var num= document.getElementById('valor_a_retirar').value;
-      if(num==0){
-          alert("introduzca un valor");
-        }else{
-			if (confirm("¿RETIRAR VALOR $" + new Intl.NumberFormat().format(num)+  "?" )){
-			   document.retirar.submit()
-			}
-       else{
-       
-				document.getElementById('fecha').value="";		
-         document.getElementById('valor_a_retirar').value="";
-         document.getElementById('concepto').value="";
-        }
-			}
-    }
-		</script>	
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-secondary">
@@ -68,10 +50,16 @@ $mysqli->close();
            
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link"href="formpagos.php"><img src="../images/pago-por-clic.png"  alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> Pagos</a>
+        <li class="nav-item dropdown">
+          <a  class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="../images/pago-por-clic.png"  alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> Pagos</a>
+          <ul class="dropdown-menu">
         </li>
         <li class="nav-item dropdown">
+        <li><a class="dropdown-item" href="formpagos.php">Pagos</a></li>
+        <li><a class="dropdown-item" href="enviar.php"> Envio a otro usuario</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
           <a
            class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="../images/User_icon_2.svg.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> <?php echo
@@ -93,35 +81,20 @@ $_SESSION["nameuser"];?>
     </div>
   </div>
 </nav>
-<h2>Pagos</h2>
-<form name="retirar" action="../conexionphp/pagos.php" method="post">
-<div class="input-group">
-  <input type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION["id"];?>">
-    <div>
-  <span class="input-group-text">Fecha</span>
-  <input type="date" name="fecha" id="fecha" aria-label="First name" class="form-control" required>
-</div>
-<input type="hidden" name="valor_a_ahorrar" id="valor_a_ahorrar">
- <div>
-  <span class="input-group-text">Valor a pagar</span>
-  <input type="text" name="valor_a_retirar" id="valor_a_retirar" aria-label="First name" class="form-control" required>
- </div>
-</div><br>
- <div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Concepto</label>
-  <select class="form-select" id="concepto" name="concepto" required>
-    <option value="">Seleccione ...</option>
-    <option value="prestamo">Prestamo express</option>
-    <option value="pago servicios">servicios hogar</option>
-   
-  </select>
-  <div>
-  <button type="submit" class="btn btn-secondary" onclick="confirmar();">PAGAR</button>
-</div>
-</div>
+<h2>Transferencias</h2>
+<form action="../conexionphp/envio.php" method="post"  >
 
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Ingrese documento a transferir</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="usuario" name="usuario" required >
+    </div>
+ 
+   <button type="submit" class="btn btn-secondary">ACEPTAR</button>
+</div>
 </form>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>     
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
 </body>
 </html>
