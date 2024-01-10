@@ -20,7 +20,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css ">
 </head>
 <body>
-  
+  <div class="caja_popup" id="formrecuperar">
+    <form action="./conexionphp/recuperar.php" class="contenedor_popup" method="POST">
+          <table>
+      <tr><th colspan="2">Recuperar contraseña</th></tr>
+              <tr> 
+                  <td><b> Documento</b></td>
+                  <td><input type="text" name="documento" required class="cajaentradatexto"></td>
+              </tr>
+              <tr> 	
+                 <td colspan="2">
+             <button type="button" onclick="cancelarform()" class="txtrecuperar">Cancelar</button>
+             <input class="txtrecuperar" type="submit" name="btnrecuperar" value="Enviar" onClick="javascript: return confirm('¿Deseas enviar tu contraseña a tu correo?');">
+        </td>
+              </tr>
+          </table>
+      </form>
+    </div>
   <div class="content">
     <h1 class="logo"><span>INICIO DE SESION</span></h1>
 
@@ -39,11 +55,13 @@
             <input type="password" name="contraseña" id="contraseña" required/>
           </p>
           <p class="block">
+            <a onclick="abrirform()">Olvidó su contraseña?</a>
             <button type="submit">Entrar</button>
           </p>
         </form>
       </div>
     </div>
   </div>
+  <script src="./js/recuperar.js"></script>
 </body>
 </html>

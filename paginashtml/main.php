@@ -46,7 +46,7 @@ $mysqli->close();
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../conexionphp/certificado.php"> Certificado de ahorro</a></li>
-            <li><a class="dropdown-item" href="#">Solicitud credito</a></li>
+            <li><a class="dropdown-item" href="solicitud.html">Solicitud credito</a></li>
            
           </ul>
         </li>

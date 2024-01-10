@@ -11,7 +11,7 @@ if ($mysqli->connect_errno) {
 
 (!empty($_SESSION['nameuser']))
 { 
- $sql= "select id, nombres from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
+ $sql= "select id, email, telefono, nombres from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
 
 $mysqli->query($sql);
 }else {
