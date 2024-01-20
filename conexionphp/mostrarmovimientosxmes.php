@@ -41,7 +41,7 @@ echo "<table border=1>";
 }  
 echo "</table>";
 $fecha = $_POST['fecha'];
-$sql = "select distinct month(fecha) from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2023 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$sql = "select distinct month(fecha) from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
 setlocale(LC_ALL, 'spanish');
 $monthNum  = $fecha;
 $dateObj   = DateTime::createFromFormat('!m', $monthNum);
@@ -58,7 +58,7 @@ echo'<th width=200 bgcolor="blue">FECHA</th>';
 echo'<th width=200 bgcolor="blue">VALOR A AHORRAR</th>';
 echo'<th width=200 bgcolor="blue">VALOR A RETIRAR</th>';
 echo'<th width=200 bgcolor="blue">CONCEPTO</th>';
-$sql = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2023 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$sql = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
 $result=mysqli_query($mysqli, $sql);  
 if($result->num_rows > 0){
 {
