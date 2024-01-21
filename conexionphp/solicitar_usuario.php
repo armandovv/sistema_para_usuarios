@@ -59,7 +59,7 @@ if (!$conn)
                 
                 (mail($paracorreo,$titulo,$mensaje,$tucorreo));
                 
-                    $queryuser =mysqli_query($conn,"update login_usuario inner join usuarios on usuarios.documento = login_usuario.id set sendpass = '".$sendpass."' where documento= '".$documento."'");
+                    $queryuser =mysqli_query($conn,"update usuarios  set sendpass = '".$sendpass."' where documento= '".$documento."'");
                 
                     echo "<script> alert('Se envio codigo de recuperacion al correo ".$mostrar['email']."') </script>";
 
@@ -139,17 +139,22 @@ showPassword.addEventListener('click', () => {
 	</script>
 </head>
 <body>
-<h2>POR FAVOR LLENE TODOS LOS DATOS PARA CREAR SU USUARIO</h2>
+<h4>POR FAVOR LLENE TODOS LOS DATOS PARA CREAR SU USUARIO</h4>
 <table>
-<form action="update_pass.php" method="POST" onsubmit="return validar()">
+<form action="crear_usuario.php" method="POST" onsubmit="return validar()">
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Ingrese el codigo enviado a su correo</label>
-  <input type="text" class="form-control" name="enviarpass" id="exampleFormControlInput1" required>
-
+  <input type="text" class="form-control" name="sendpass" id="exampleFormControlInput1" required>
+  <label for="exampleFormControlInput1" class="form-label">Ingrese su numero de documento</label>
+  <input type="text" class="form-control" name="documento" id="exampleFormControlInput1" required>
 </div>
+
+  
+  <input type="hidden" class="form-control" name="id" id="exampleFormControlInput1" value="<?php echo $mostrar['documento']; ?>" required>
 <div class="mb-3">
 <label for="inputPassword" class="form-label">ingrese una contraseña nueva</label>
 <input type="password" id="inputPassword" class="form-control  password1" name="contraseña"  required  pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
+<input type="hidden" name="nueva">
 <span class="fa fa-fw fa-eye password-icon show-password"></span>
 <div id="passwordHelpBlock" class="form-text">
  Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros, no pueden haber espacios.
@@ -160,7 +165,7 @@ showPassword.addEventListener('click', () => {
 <input type="password" id="inputPassword5" class="form-control  password2" name="confirm" required pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
 </div>
 <div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-3">Cambiar</button>
+    <button type="submit" class="btn btn-primary mb-3">Crear usuario</button>
   </div>
 </form>
 

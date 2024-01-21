@@ -97,7 +97,7 @@ box-shadow: -14px -13px 10px -3px rgba(0,0,0,0.75);
 	
 }
 a
-{   color: rgb(230, 236, 241);
+{   color: rgb(247, 247, 247);
 	text-decoration-line: underline;
 	cursor:pointer;
 }
@@ -114,11 +114,11 @@ table
 }
 th 
 {
-    background: rgb(15, 21, 25);
+    background: rgb(74, 78, 81);
     height: 40px;
     font-weight: lighter;
     text-shadow: 0 1px 0 #9cb1c2;
-    color: rgb(18, 1, 1);
+    color: rgb(243, 238, 238);
     border: 1px solid #424e58;
     box-shadow: inset 0px 1px 2px #394f61;
     transition: all 0.2s;
