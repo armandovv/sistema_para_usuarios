@@ -50,7 +50,7 @@ if (!$conn)
                 $sendpass 	= generatePassword($length);
                 $nombres = $mostrar['nombres'];
                 $paracorreo =$mostrar['email'];
-                $titulo				= "Recuperar clave de acceso";
+                $titulo				= "Solicitar clave de acceso";
                 $mensaje			= "Hola $nombres
                                       Ingresa con el codigo $sendpass y procede a crear tu usuario con clave nueva.
                                         cordialmente

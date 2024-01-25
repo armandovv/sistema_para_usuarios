@@ -1,7 +1,7 @@
 <?php
 @session_start();
 $_SESSION = array();
-$_SESSION['nameuser'];
+
 // Si se desea destruir la sesión completamente, borre también la cookie de sesión.
 // Nota: ¡Esto destruirá la sesión, y no la información de la sesión!
 if (ini_get("session.use_cookies")) {

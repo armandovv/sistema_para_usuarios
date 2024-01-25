@@ -1,4 +1,4 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 
 <?php
 session_start();
@@ -16,18 +16,10 @@ else if
 $sql="select*from login_usuario inner join usuarios on usuarios.documento = login_usuario.id where '".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."' ";
 $result=mysqli_query($mysqli, $sql);
 if($result->num_rows > 0){
-    while ($mostrar=mysqli_fetch_array($result)){
+$mostrar=mysqli_fetch_array($result);
     
-        echo"<table>";
-        echo'<tr><td><img src="../images/User_icon_2.svg.png" width="200" height="200"></td></tr>';
-        echo"<td><h3>",'Nombres: ' ,$mostrar['nombres']."</h3>";
-        echo"<h3>",'Documento: ' ,$mostrar['documento']."</h3>";
-        echo"<h3>",'Email: ' ,$mostrar['email']. "</h3>";
-        echo"<h3>",'Telefono: ' ,$mostrar['telefono']. "</h3></td></tr>";
-        echo'<tr><td><center><a href="../paginashtml/actualizar_datos.php"><input type="button" value="Actualizar informacion"></a><br>';
-        echo'<a href="../paginashtml/main.php">VOLVER</a></center></td></tr>';
-        echo"</table>";
-    }
+       
+    
 
 
 
@@ -37,6 +29,48 @@ if($result->num_rows > 0){
 
 }   
 
-}
+}else {
+    echo '<script>alert("SE CERRO LA SESION DE FORMA INESPERADA")</script> ';
+  
+    echo "<script>location.href='../index.html'</script>";
+  }
 ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+.card {
+	margin-left: auto;
+    margin-right: auto;}
+
+</style>
+
+ </head>
+ <body>
+
+<div class="card" style="width: 18rem;" id="content">
+  <img src="../images/User_icon_2.svg.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Informacion general</h5>
+    <p class="card-text">Nombres <?php echo $mostrar['nombres'];?> </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Numero documento <?php echo $mostrar['documento'];?></li>
+    <li class="list-group-item">Correo electronico <?php echo $mostrar['email'];?></li>
+    <li class="list-group-item">Telefono de contacto <?php echo $mostrar['telefono'];?></li>
+  </ul>
+  <div class="card-body">
+    <a href="../paginashtml/actualizar_datos.php" class="card-link">Actualizar datos</a>
+    <a href="../paginashtml/main.php" class="card-link">volver</a>
+  </div>
+ 
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>   
+</body>
+</html>
