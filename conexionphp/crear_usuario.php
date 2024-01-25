@@ -6,7 +6,7 @@ $dbname="ahorros_familia";
 $conn= mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 $documento =$_POST['documento'];
 $sendpass = $_POST['sendpass'];
-$query =mysqli_query ($conn,"select  sendpass from usuarios where documento='".$documento."' and sendpass='".$sendpass."'");
+$query =mysqli_query ($conn,"select  sendpass from usuarios where documento='".$documento."'and sendpass= '".$sendpass."' and sendpass='".$sendpass."'");
 $nr= mysqli_num_rows($query);
 	if ($nr<1){
     echo "<script> alert('EL CODIGO O DOCUMENTO INGRESADO NO SON CORRECTOS, VERIFIQUE DE NUEVO');window.location= '../login.html' </script>"; 
