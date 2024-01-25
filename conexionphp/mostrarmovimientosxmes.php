@@ -54,11 +54,11 @@ echo"<CENTER><H4>",'MOVIMIENTOS ' ,strtoupper($monthName). "</H4></center>";
 
 echo'<center><table class="enum-3" border=1>';
 
-echo'<th width=100 bgcolor="blue">ID</th>';
-echo'<th width=100 bgcolor="blue">FECHA</th>';
-echo'<th width=200 bgcolor="blue">VALOR A AHORRAR</th>';
-echo'<th width=200 bgcolor="blue">VALOR A RETIRAR</th>';
-echo'<th width=200 bgcolor="blue">CONCEPTO</th>';
+echo'<th width=100 bgcolor="green">ID</th>';
+echo'<th width=100 bgcolor="green">FECHA</th>';
+echo'<th width=200 bgcolor="green">VALOR A AHORRAR</th>';
+echo'<th width=200 bgcolor="green">VALOR A RETIRAR</th>';
+echo'<th width=200 bgcolor="green">CONCEPTO</th>';
 $sql = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
 $result=mysqli_query($mysqli, $sql);  
 if($result->num_rows > 0){
