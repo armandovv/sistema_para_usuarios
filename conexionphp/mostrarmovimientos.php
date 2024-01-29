@@ -1,5 +1,5 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<div id='cualquier'>
+<div id='content'>
 
 <?php
 session_start();
@@ -98,12 +98,12 @@ else { echo' <script>alert("USUARIO NO EXISTE EN LA BASE DE DATOS")</script> ';
 
 ?>
 </div>
-<center><button type="input"><a href="javascript:imprSelec('cualquier')">IMPRIMIR</a></button><br>
+<center><button type="input"><a href="javascript:imprSelec('content')">IMPRIMIR</a></button><br>
 <a href='../paginashtml/main.php'>VOLVER</a>
 	<script language="Javascript">
-	function imprSelec (cualquier)
+	function imprSelec (content)
 	{ 
-	var ficha=document.getElementById(cualquier);
+	var ficha=document.getElementById(content);
 	var ventimp=window.open('','popimpr');
 	ventimp.document.write( ficha.innerHTML );
 	ventimp.document.close();

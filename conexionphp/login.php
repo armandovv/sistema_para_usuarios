@@ -22,7 +22,9 @@ if (!$conn)
 	//la variable  $mysqli viene de connect_db que lo traigo con el require("connect_db.php");
 	$query =mysqli_query ($conn,"select id, nombres, contraseña from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$id."' and contraseña='".$contraseña."'"); 
 	$nr= mysqli_num_rows($query);
-	if ($nr==1)
+	
+	
+	if ($nr==1) 
 	{ 
 		
 		session_start();

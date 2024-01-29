@@ -87,7 +87,10 @@ echo "</table>";
 else { echo' <script>alert("NO HAY MOVIMIENTOS PARA  '.strtoupper($monthName).'")</script> ';
 	echo "<script>location.href='../paginashtml/main.php'</script>";
 }
-   }
+   }else{
+echo'<script>alert("SE CERRO LA SESION DE FORMA INESPERADA");</script>';
+echo "<script>location.href='../index.html'</script>";
+}
 
 
 ?>
@@ -106,14 +109,14 @@ margin-left: auto;
 }
 .doc .format{
 
-	margin-left: 60px;
+	margin-left: 40px;
 }
  .nom{
-	margin-left: 60px;
+	margin-left: 40px;
 }
 
 </style>
-<center><button class="btn btn-primary" onclick="createPDF()">Descargar</button><br>
+<center><button class="btn btn-primary" onclick="createPDF()">Descargar extracto</button><br>
 <a href='../paginashtml/main.php'>VOLVER</a>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

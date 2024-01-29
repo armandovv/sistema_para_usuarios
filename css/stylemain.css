@@ -36,3 +36,8 @@ form .btn-primary{
  border-color: blue;
 
   }
+  .dropdown:hover .dropdown-menu {
+    background-color: #a1a29d;
+    
+    display: block !important;
+  }
