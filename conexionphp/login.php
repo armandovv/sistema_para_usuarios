@@ -20,12 +20,13 @@ if (!$conn)
 
 
 	//la variable  $mysqli viene de connect_db que lo traigo con el require("connect_db.php");
-	$query =mysqli_query ($conn,"select id, nombres, contraseña from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$id."' and contraseña='".$contraseña."'"); 
+	$query =mysqli_query ($conn,"select id, nombres, contraseña from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$id."'"); 
 	$nr= mysqli_num_rows($query);
+	$mostrar = mysqli_fetch_array($query);
 	
-	
-	if ($nr==1) 
+	if (($nr==1)  && password_verify($contraseña,$mostrar['contraseña']  ) )
 	{ 
+
 		
 		session_start();
 		$_SESSION['id'] = $id;
@@ -34,8 +35,8 @@ if (!$conn)
 	
 			$fila = $query->fetch_row();
 	
-			/* la columna cuatro corresponde con la columna del nombre completo */
-			$nameuser = $fila[1];
+			/* la columna uno corresponde con la columna del nombre completo */
+			$nameuser = $mostrar['nombres'];
 	
 			/* Podrías guardarlo como variable de sesión */
 			$_SESSION['nameuser'] = $nameuser;

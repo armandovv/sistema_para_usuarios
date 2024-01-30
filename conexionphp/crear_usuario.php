@@ -18,6 +18,7 @@ $nr= mysqli_num_rows($query);
       $id=$_POST['id'];
       $contraseña=$_POST['contraseña'];
       $nueva=$_POST['nueva'];
+      $contraseña = password_hash($contraseña,PASSWORD_DEFAULT);
    
       $query =mysqli_query ($conn, "INSERT INTO login_usuario Values('".$id."','".$contraseña."','".$nueva."')");
       echo "<script> alert('USUARIO CREADO CON EXITO');window.location= '../login.html' </script>"; 
