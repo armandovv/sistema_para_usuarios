@@ -61,7 +61,7 @@ if (!$conn)
                 
                     $queryuser =mysqli_query($conn,"update usuarios  set sendpass = '".$sendpass."' where documento= '".$documento."'");
                 
-                    echo "<script> alert('Se envio codigo de recuperacion al correo ".$mostrar['email']."') </script>";
+                    echo "<script> alert('Se envio codigo para registrar su usuario al correo ".$mostrar['email']."') </script>";
 
                } }
 ?>           

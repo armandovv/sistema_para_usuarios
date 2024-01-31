@@ -32,12 +32,12 @@ $mysqli->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script language="Javascript"  type="text/javascript">
   function validar(){
-  var pasActual=document.getElementById("contraseña").value;
+ 
   var pasNew1=document.getElementById("nueva").value;
   var pasNew2=document.getElementById("confirm").value;
 if(pasActual.length=="0"){
   alert("INGRESE SU CLAVE ACTUAL");
-  document.getElementById("contraseña").focus();
+  document.getElementById("nueva").focus();
   return false;
 }
 if(pasNew1!= pasNew2){
@@ -115,15 +115,11 @@ $_SESSION["nameuser"];?>
 <form action="../conexionphp/updatepass.php" method="post"  onsubmit="return validar()">
 <div class="mb-3 row">
 <input type="hidden" name="id" id="id" value="<?php echo $_SESSION["id"];?>">
-<label for="inputPassword" class="col-sm-2 col-form-label">Contraseña actual</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="contraseña" name="contraseña" required>
-    </div>
-  </div>
+
   <div class="mb-3 row">
     <label for="inputPassword" class="col-sm-2 col-form-label">Contraseña nueva</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="nueva" name="nueva" required pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
+      <input type="password" class="form-control" id="nueva" name="contraseña" required pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
     </div>
   </div>
   <div class="mb-3 row">
