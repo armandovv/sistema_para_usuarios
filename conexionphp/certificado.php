@@ -1,6 +1,13 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"><div class="doc" id='content'>
-
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<header>
+<nav class="navbar bg-body-tertiary ">
+  <form class="container-fluid justify-content-start">
+    <button class="btn btn-outline-success me-2" type="button"  onclick="createPDF()">Descargar certificado</button>
+    <a href='../paginashtml/main.php'> <button class="btn btn-sm btn-outline-secondary" type="button">VOLVER</button></a>
+  </form>
+</nav>
+</header>
+<div class="doc" id='content'>
 <?php
 session_start();
 $mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
@@ -61,6 +68,8 @@ else { echo' <script>alert("USUARIO NO EXISTE EN LA BASE DE DATOS")</script> ';
 ?>
 </div>
 <style>
+ 
+ 
 .doc{
 
 width: 880 px;
@@ -74,8 +83,9 @@ margin-left: auto;
 
 
 </style>
-<center><button class="btn btn-primary" onclick="createPDF()">Descargar certificado</button><br>
-<a href='../paginashtml/main.php'>VOLVER</a>
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>

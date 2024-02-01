@@ -35,11 +35,7 @@ $mysqli->close();
  
   var pasNew1=document.getElementById("nueva").value;
   var pasNew2=document.getElementById("confirm").value;
-if(pasActual.length=="0"){
-  alert("INGRESE SU CLAVE ACTUAL");
-  document.getElementById("nueva").focus();
-  return false;
-}
+
 if(pasNew1!= pasNew2){
 alert("CAMPO CONTRASEÑA NUEVA Y CAMPO CONFIRMACION NO COINCIDEN");
 document.getElementById("nueva").focus();
