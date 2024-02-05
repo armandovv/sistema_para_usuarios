@@ -13,6 +13,10 @@
  background: #707068;
 
   }
+  #carouselExampleAutoplaying .d-block {
+
+    height: 400px;
+  }
 
   
 h6{

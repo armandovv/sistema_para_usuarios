@@ -14,6 +14,10 @@ if ($mysqli->connect_errno) {
  $sql= "select id, nombres from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
 
 $mysqli->query($sql);
+$fecha= date("Y-m-d H:i:s");
+$sql= "select nombres, (sum(valor_a_ahorrar)- sum(valor_a_retirar)) from usuarios inner join ahorros on ahorros.usuario= usuarios.documento where nombres ='".$_SESSION['nameuser']."'";
+$result=mysqli_query($mysqli, $sql);
+$saldo=mysqli_fetch_array($result);
 }else {
   echo '<script>alert("SE CERRO LA SESION DE FORMA INESPERADA")</script> ';
 
@@ -81,26 +85,18 @@ $_SESSION["nameuser"];?>
     </div>
   </div>
 </nav>
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../images/AHORRO-1024x576.png" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../images/ahorros-monedas-economia-dinero2shut-1509241795.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../images/importancia-dinero-efectivo.jpg" class="d-block w-100" alt="...">
-    </div>
+<div class="card text-center">
+  <div class="card-header">
+    AUTOGESTION SISTEMA DE INFORMACION AHORROS FAMILIAR
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+  <div class="card-body">
+    <h5 class="card-title"> <?php echo strtoupper($_SESSION["nameuser"]);?></h5>
+    <p class="card-text">Saldo disponible <h5>$<?php echo number_format($saldo['(sum(valor_a_ahorrar)- sum(valor_a_retirar))']);?></h5></p>
+   
+  </div>
+  <div class="card-footer text-body-secondary">
+   Ultimo acceso  <?php echo $fecha;?>
+  </div>
 </div>
 <h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>
 <div class="row">
