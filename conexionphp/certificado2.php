@@ -34,11 +34,7 @@ $sql=" select min(fecha) from login_usuario inner join ahorros on ahorros.usuari
 $result=mysqli_query($mysqli, $sql);
 while ($mostrar=mysqli_fetch_array($result)){
 echo "<tr><td>",'posee sus ahorros en nuestro sistema desde la fecha ' ,$mostrar['min(fecha)']."</td></tr>"; }
-$sql="SELECT  sum(valor_a_ahorrar)-sum(valor_a_retirar) from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
-$result=mysqli_query($mysqli, $sql);
-while ($mostrar=mysqli_fetch_array($result)){
- echo "<tr><td id='saldo'>",'saldo a la fecha $' ,number_format($mostrar['sum(valor_a_ahorrar)-sum(valor_a_retirar)'],2).' pesos MCTE'."<td></td><td width=50></td></tr>" ;
-}
+
 setlocale(LC_TIME, "spanish");
 echo "<tr><td>" ,"Se expide este certificado a solicitud del interesado el dia ",utf8_encode(strftime("%A %d de %B del %Y")),"</td></tr>"; 
 

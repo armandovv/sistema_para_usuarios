@@ -39,3 +39,8 @@ form .btn-primary{
     
     display: block !important;
   }
+  .navbar-expand-lg.container-fluid .navbar-collapse .btn-secondary{
+    background-color: #f4f6ec;
+
+  }
+  

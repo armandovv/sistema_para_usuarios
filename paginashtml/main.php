@@ -14,7 +14,9 @@ if ($mysqli->connect_errno) {
  $sql= "select id, nombres from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
 
 $mysqli->query($sql);
-$fecha= date("Y-m-d H:i:s");
+$fecha = time();
+
+
 $sql= "select nombres, (sum(valor_a_ahorrar)- sum(valor_a_retirar)) from usuarios inner join ahorros on ahorros.usuario= usuarios.documento where nombres ='".$_SESSION['nameuser']."'";
 $result=mysqli_query($mysqli, $sql);
 $saldo=mysqli_fetch_array($result);
@@ -49,7 +51,23 @@ $mysqli->close();
           <img src="../images/enviar.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">Documentos
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../conexionphp/certificado.php"> Certificado de ahorro</a></li>
+         <li> <p>
+  <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+    Certificado ahorro
+  </button>
+</p>
+<div style="min-height: 3px;">
+  <div class="collapse collapse-vertical" id="collapseWidthExample">
+    <div class="btn-group dropstart" style="width: 140px;">
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="../conexionphp/certificado.php">Con saldo</a></li>
+    <li><a class="dropdown-item" href="../conexionphp/certificado2.php">Sin saldo</a></li>
+   
+</ul>
+  
+    </div>
+  </div>
+</div></li>
             <li><a class="dropdown-item" href="solicitud.html">Solicitud credito</a></li>
            
           </ul>
@@ -91,11 +109,11 @@ $_SESSION["nameuser"];?>
   </div>
   <div class="card-body">
     <h5 class="card-title"> <?php echo strtoupper($_SESSION["nameuser"]);?></h5>
-    <p class="card-text">Saldo disponible <h5>$<?php echo number_format($saldo['(sum(valor_a_ahorrar)- sum(valor_a_retirar))']);?></h5></p>
+    <p class="card-text">Saldo disponible <h5>$<?php echo number_format($saldo['(sum(valor_a_ahorrar)- sum(valor_a_retirar))'],2);?></h5></p>
    
   </div>
   <div class="card-footer text-body-secondary">
-   Ultimo acceso  <?php echo $fecha;?>
+   Ultimo acceso  <?php echo  date("d-m-Y (H:i:s)", $fecha);?>
   </div>
 </div>
 <h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>

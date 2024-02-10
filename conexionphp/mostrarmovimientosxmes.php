@@ -48,8 +48,8 @@ while ($mostrar=mysqli_fetch_array($result))
 { 
 echo "<table class='format' border=1>";  
  
-    echo "<td width=100>",number_format($mostrar['sum(valor_a_retirar)'])."</td>";  
-    echo "<td width=100>",number_format($mostrar['sum(valor_a_ahorrar)-sum(valor_a_retirar)'])."</td>";  
+    echo "<td width=100>",number_format($mostrar['sum(valor_a_retirar)'],2)."</td>";  
+    echo "<td width=100>",number_format($mostrar['sum(valor_a_ahorrar)-sum(valor_a_retirar)'],2)."</td>";  
 	} 
 echo "</table>";
 
@@ -83,8 +83,8 @@ echo "<table  class='enum-3' border=1>";
  
     echo "<td width=100>",$mostrar['id_movimiento']."</td>";  
     echo "<td width=150>",$mostrar['fecha']."</td>";  
-	echo "<td width=200>",number_format($mostrar['valor_a_ahorrar'])."</td>";  
-	echo "<td width=200>",number_format($mostrar['valor_a_retirar'])."</td>";  
+	echo "<td width=200>",number_format($mostrar['valor_a_ahorrar'],2)."</td>";  
+	echo "<td width=200>",number_format($mostrar['valor_a_retirar'],2)."</td>";  
     echo "<td width=200>",$mostrar['concepto']."</td>"; 
 }  
 echo "</table>"; 

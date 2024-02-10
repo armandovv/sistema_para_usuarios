@@ -69,7 +69,23 @@ return false;
           <img src="../images/enviar.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">Documentos
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../conexionphp/certificado.php"> Certificado de ahorro</a></li>
+            <li> <p>
+  <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+    Certificado ahorro
+  </button>
+</p>
+<div style="min-height: 3px;">
+  <div class="collapse collapse-vertical" id="collapseWidthExample">
+    <div class="btn-group dropstart" style="width: 140px;">
+    <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="../conexionphp/certificado.php">Con saldo</a></li>
+    <li><a class="dropdown-item" href="../conexionphp/certificado2.php">Sin saldo</a></li>
+   
+</ul>
+  
+    </div>
+  </div>
+</div></li>
             <li><a class="dropdown-item" href="#">Solicitud credito</a></li>
            
           </ul>

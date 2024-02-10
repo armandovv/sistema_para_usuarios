@@ -1,3 +1,54 @@
+<?php
+// Iniciar sesión
+session_start();
+ 
+// Conexión a la base de datos
+$db = mysqli_connect('127.0.0.1', 'root', '', 'ahorros_familia');
+ 
+$errors = [];
+
+// Si se ha enviado el formulario
+if (isset($_POST['login_button'])) {
+  $id = mysqli_real_escape_string($db, $_POST['id']);
+  $contraseña = mysqli_real_escape_string($db, $_POST['contraseña']);
+ 
+  // Comprobar si el nombre de usuario es válido
+  $query = "select id, nombres, contraseña from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$id."'";
+  $results = mysqli_query($db, $query);
+ 
+  if (mysqli_num_rows($results) == 1) {
+    // Nombre de usuario válido, verificar contraseña
+    $row = mysqli_fetch_assoc($results);
+    if (password_verify($contraseña, $row['contraseña'])) {
+      // Inicio de sesión válido
+      $_SESSION['id'] = $id;
+	
+	
+	
+			
+	
+			/* la columna uno corresponde con la columna del nombre completo */
+			$nameuser = $row['nombres'];
+	
+			/* Podrías guardarlo como variable de sesión */
+			
+      $_SESSION['nameuser'] = $nameuser;
+      header('location: ./paginashtml/main.php');
+    } else {
+      // Contraseña inválida
+      $errors[] = "Nombre de usuario/contraseña inválidos";
+    }
+  } else {
+    // Nombre de usuario inválido
+    $errors[] = "Nombre de usuario/contraseña inválidos";
+  }
+}
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +69,7 @@
     />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css ">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
   <div class="caja_popup" id="formrecuperar">
@@ -58,12 +110,21 @@
       </div>
   <div class="content">
     <h1 class="logo"><span>INICIO DE SESION</span></h1>
+    <?php
+              if (count($errors) > 0) {
+                echo "<div class='alert alert-danger' role='alert'>";
+                foreach ($errors as $error) {
+                    echo $error . "<br>";
+                }
+                echo "</div>";
+              }
+              ?>
 
     <div class="contact-wrapper">
       <!-- FORMULARIO -->
       <div class="contact-form">
         <!-- <h3>Contactanos</h3> -->
-        <form action="./conexionphp/login.php" method="post">
+        <form action="login.php" method="post">
           <p>
             <label for="fullname">documento</label>
             <input type="text" name="id" id="id" required/>
@@ -76,7 +137,7 @@
           <p class="block">
             <a onclick="abrirform()">Olvidó su contraseña?</a><br>
             <a onclick="openwindow()">Registrese</a>
-            <button type="submit">Entrar</button>
+            <button name="login_button" type="submit">Entrar</button>
           </p>
         </form>
       </div>
@@ -84,5 +145,6 @@
   </div>
   <script src="./js/recuperar.js"></script>
   <script src="./js/crear.js"></script>
+  
 </body>
 </html>
