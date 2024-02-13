@@ -19,7 +19,7 @@ if (!$conn)
 	if ($nr<1)
 	{ echo '<script>alert("EL DOCUMENTO INGRESADO NO SE ENCUENTRA REGISTRADO EN NUESTRA BASE DE DATOS")</script> ';
 		
-        echo "<script>location.href='../login.html'</script>";
+        echo "<script>location.href='../login.php'</script>";
 		
 		}else{
             $documento = $_POST['documento'];
@@ -29,7 +29,7 @@ if (!$conn)
         if($nr==1){
                 echo '<script>alert("Usted ya se encuentra registrado en nuestro sistema. Por favor verifique e intente de nuevo.")</script> ';
 		
-                echo "<script>location.href='../login.html'</script>";
+                echo "<script>location.href='../login.php'</script>";
                 
 
                }else{

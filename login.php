@@ -33,14 +33,15 @@ if (isset($_POST['login_button'])) {
 			/* Podrías guardarlo como variable de sesión */
 			
       $_SESSION['nameuser'] = $nameuser;
+      $_SESSION['time'] = time();
       header('location: ./paginashtml/main.php');
     } else {
       // Contraseña inválida
-      $errors[] = "Nombre de usuario/contraseña inválidos";
+      $errors[] = "documento/contraseña inválidos";
     }
   } else {
     // Nombre de usuario inválido
-    $errors[] = "Nombre de usuario/contraseña inválidos";
+    $errors[] = "documento/contraseña inválidos";
   }
 }
 ?>
@@ -126,17 +127,17 @@ if (isset($_POST['login_button'])) {
         <!-- <h3>Contactanos</h3> -->
         <form action="login.php" method="post">
           <p>
-            <label for="fullname">documento</label>
+            <label for="fullname">DOCUMENTO</label>
             <input type="text" name="id" id="id" required/>
           </p>
 
           <p>
-            <label for="email">contraseña</label>
+            <label for="email">CONTRASEÑA</label>
             <input type="password" name="contraseña" id="contraseña" required/>
           </p>
           <p class="block">
-            <a onclick="abrirform()">Olvidó su contraseña?</a><br>
-            <a onclick="openwindow()">Registrese</a>
+            <a class="ref" onclick="abrirform()">Olvidó su contraseña?</a><br>
+            <a class="ref" onclick="openwindow()">Registrese</a>
             <button name="login_button" type="submit">Entrar</button>
           </p>
         </form>

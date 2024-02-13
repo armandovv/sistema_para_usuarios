@@ -11,6 +11,7 @@ if ($mysqli->connect_errno) {
 
 (!empty($_SESSION['nameuser']))
 { 
+ 
  $sql= "select id, nombres from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
 
 $mysqli->query($sql);
@@ -20,11 +21,39 @@ $fecha = time();
 $sql= "select nombres, (sum(valor_a_ahorrar)- sum(valor_a_retirar)) from usuarios inner join ahorros on ahorros.usuario= usuarios.documento where nombres ='".$_SESSION['nameuser']."'";
 $result=mysqli_query($mysqli, $sql);
 $saldo=mysqli_fetch_array($result);
-}else {
+if(isset($_SESSION['time']) ) {
+
+  //Tiempo en segundos para dar vida a la sesión.
+  $inactivo = 30;
+
+  //Calculamos tiempo de vida inactivo.
+  $fecha = time() - $_SESSION['time'];
+
+      //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+      if($fecha > $inactivo)
+      {
+          //Removemos sesión.
+          session_unset();
+          //Destruimos sesión.
+          session_destroy();              
+          //Redirigimos pagina.
+          echo "<script> alert('Se cerro la sesion por inactividad');window.location= '../login.php' </script>";
+
+          exit();
+      
+} else {
+  //Activamos sesion tiempo.
+  $_SESSION['time'] = time();
+}
+} 
+}  else{
   echo '<script>alert("SE CERRO LA SESION DE FORMA INESPERADA")</script> ';
 
   echo "<script>location.href='../index.html'</script>";
 }
+
+
+ 
 $mysqli->close();
 ?>
 <!DOCTYPE html>
@@ -113,7 +142,7 @@ $_SESSION["nameuser"];?>
    
   </div>
   <div class="card-footer text-body-secondary">
-   Ultimo acceso  <?php echo  date("d-m-Y (H:i:s)", $fecha);?>
+   Ultimo acceso  <?php echo  date("d-m-Y (H:i:s)",);?>
   </div>
 </div>
 <h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>

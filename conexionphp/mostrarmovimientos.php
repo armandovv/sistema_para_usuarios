@@ -92,6 +92,31 @@ echo "</table>";
 else { echo' <script>alert("USUARIO NO EXISTE EN LA BASE DE DATOS")</script> ';
 	echo "<script>location.href='../paginas/mostrar_estado.php'</script>";
 }
+if(isset($_SESSION['time']) ) {
+
+	//Tiempo en segundos para dar vida a la sesión.
+	$inactivo = 300;
+  
+	//Calculamos tiempo de vida inactivo.
+	$fecha = time() - $_SESSION['time'];
+  
+		//Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+		if($fecha > $inactivo)
+		{
+			//Removemos sesión.
+			session_unset();
+			//Destruimos sesión.
+			session_destroy();              
+			//Redirigimos pagina.
+			echo "<script> alert('Se cerro la sesion por inactividad');window.location= '../login.php' </script>";
+  
+			exit();
+		
+  } else {
+	//Activamos sesion tiempo.
+	$_SESSION['time'] = time();
+  }
+  } 
   }
 
 

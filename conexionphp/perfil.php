@@ -17,17 +17,32 @@ $sql="select*from login_usuario inner join usuarios on usuarios.documento = logi
 $result=mysqli_query($mysqli, $sql);
 if($result->num_rows > 0){
 $mostrar=mysqli_fetch_array($result);
-    
-       
-    
+  }
+  if(isset($_SESSION['time']) ) {
 
-
-
-
-
-
-
-}   
+    //Tiempo en segundos para dar vida a la sesión.
+    $inactivo = 300;
+  
+    //Calculamos tiempo de vida inactivo.
+    $fecha = time() - $_SESSION['time'];
+  
+        //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+        if($fecha > $inactivo)
+        {
+            //Removemos sesión.
+            session_unset();
+            //Destruimos sesión.
+            session_destroy();              
+            //Redirigimos pagina.
+            echo "<script> alert('Se cerro la sesion por inactividad');window.location= '../login.php' </script>";
+  
+            exit();
+        
+  } else {
+    //Activamos sesion tiempo.
+    $_SESSION['time'] = time();
+  }
+  }    
 
 }else {
     echo '<script>alert("SE CERRO LA SESION DE FORMA INESPERADA")</script> ';
@@ -56,7 +71,7 @@ $mostrar=mysqli_fetch_array($result);
   <img src="../images/User_icon_2.svg.png" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Informacion general</h5>
-    <p class="card-text">Nombres <?php echo $mostrar['nombres'];?> </p>
+    <p class="card-text">Nombres <?php echo ucwords($mostrar['nombres']);?> </p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Numero documento <?php echo $mostrar['documento'];?></li>

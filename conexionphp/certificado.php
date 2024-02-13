@@ -29,7 +29,7 @@ while ($mostrar=mysqli_fetch_array($result)){
 echo"<center><table>";
 echo'<img src="../images/logo162645.png" class="rounded" alt="...">';
 echo'<tr><td><h5><center>CERTIFICADO</h5></center></td></tr>';
-echo"<tr><td>",'Por medio de la presente, hacemos constar que el señor(a) ',$mostrar['nombres'].' con documento ',$mostrar['id'].':'."</td></tr>" ; }
+echo"<tr><td>",'Por medio de la presente, hacemos constar que el señor(a) ',ucwords($mostrar['nombres']).' con documento ',$mostrar['id'].':'."</td></tr>" ; }
 $sql=" select min(fecha) from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
 $result=mysqli_query($mysqli, $sql);
 while ($mostrar=mysqli_fetch_array($result)){
@@ -56,6 +56,31 @@ echo "</table></center>";
 else { echo' <script>alert("USUARIO NO EXISTE EN LA BASE DE DATOS")</script> ';
 	echo "<script>location.href='../paginas/mostrar_estado.php'</script>";
 }
+if(isset($_SESSION['time']) ) {
+
+  //Tiempo en segundos para dar vida a la sesión.
+  $inactivo = 300;
+
+  //Calculamos tiempo de vida inactivo.
+  $fecha = time() - $_SESSION['time'];
+
+      //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+      if($fecha > $inactivo)
+      {
+          //Removemos sesión.
+          session_unset();
+          //Destruimos sesión.
+          session_destroy();              
+          //Redirigimos pagina.
+          echo "<script> alert('Se cerro la sesion por inactividad');window.location= '../login.php' </script>";
+
+          exit();
+      
+} else {
+  //Activamos sesion tiempo.
+  $_SESSION['time'] = time();
+}
+} 
   
 }else{
 

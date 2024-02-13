@@ -42,7 +42,7 @@ $tucorreo			= "From: varelaarmando430@gmail.com";
 	echo "<script> alert('Se envio codigo de recuperacion de contraseña correo ".$mostrar['email']."')</script>";
 }else
 {
-	echo "<script> alert('El documento ingresado no se encuentra en nuestra base de datos');window.location= '../login.html' </script>";
+	echo "<script> alert('El documento ingresado no se encuentra en nuestra base de datos');window.location= '../login.php' </script>";
 }
 
 
