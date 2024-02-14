@@ -110,7 +110,7 @@ else { echo' <script>alert("NO HAY MOVIMIENTOS PARA  '.strtoupper($monthName).'"
           //Destruimos sesión.
           session_destroy();              
           //Redirigimos pagina.
-          echo "<script> alert('Se cerro la sesion por inactividad');window.location= '../login.php' </script>";
+          header('location: ended_sesion.php');
 
           exit();
       

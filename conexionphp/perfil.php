@@ -34,7 +34,7 @@ $mostrar=mysqli_fetch_array($result);
             //Destruimos sesión.
             session_destroy();              
             //Redirigimos pagina.
-            echo "<script> alert('Se cerro la sesion por inactividad');window.location= '../login.php' </script>";
+            header('location: ended_sesion.php');
   
             exit();
         

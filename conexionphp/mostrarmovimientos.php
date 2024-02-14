@@ -108,7 +108,7 @@ if(isset($_SESSION['time']) ) {
 			//Destruimos sesión.
 			session_destroy();              
 			//Redirigimos pagina.
-			echo "<script> alert('Se cerro la sesion por inactividad');window.location= '../login.php' </script>";
+			header('location: ../conexionphp/ended_sesion.php');
   
 			exit();
 		
