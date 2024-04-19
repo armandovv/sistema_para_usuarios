@@ -37,11 +37,11 @@ if (isset($_POST['login_button'])) {
       header('location: ./paginashtml/main.php');
     } else {
       // Contraseña inválida
-      $errors[] = "documento/contraseña inválidos";
+      $errors[] = "Documento/contraseña inválidos";
     }
   } else {
     // Nombre de usuario inválido
-    $errors[] = "documento/contraseña inválidos";
+    $errors[] = "Documento/contraseña inválidos";
   }
 }
 ?>
@@ -73,7 +73,10 @@ if (isset($_POST['login_button'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<video autoplay="true" muted="true" loop="true"> <source src="./images/videov.mp4" type="video/mp4"></video>
+<br><br>
   <div class="caja_popup" id="formrecuperar">
+   
     <form action="./conexionphp/recuperar.php" class="contenedor_popup" method="POST">
           <table>
       <tr><th colspan="2">Recuperar contraseña</th></tr>
@@ -109,6 +112,7 @@ if (isset($_POST['login_button'])) {
             </table>
         </form>
       </div>
+      <section class="sect">
   <div class="content">
     <h1 class="logo"><span>INICIO DE SESION</span></h1>
     <?php
@@ -144,8 +148,9 @@ if (isset($_POST['login_button'])) {
       </div>
     </div>
   </div>
+  </section>
   <script src="./js/recuperar.js"></script>
   <script src="./js/crear.js"></script>
-  
+ 
 </body>
 </html>

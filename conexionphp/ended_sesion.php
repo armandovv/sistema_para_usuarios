@@ -24,13 +24,6 @@ position: relative;
 top: 100px;
 
 }
-
-
-
-
-
-
-
 </style>
 
 
@@ -44,8 +37,11 @@ top: 100px;
       <div class="card-body">
         <h5 class="card-title">Sesion expirada</h5>
         <p class="card-text">Por seguridad, el tiempo de sesion ha caducado. vuelve a ingresar.</p>
-        <p class="card-text"><a href="../login.php" class="btn btn-primary">Iniciar sesion</a></p>
-      </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+ <a href="../login.php"> <button class="btn btn-primary me-md-2" type="button">Iniciar sesion</button></a>
+ </div>
+     
     </div>
   </div>
 </div>

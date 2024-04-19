@@ -142,7 +142,7 @@ $_SESSION["nameuser"];?>
    
   </div>
   <div class="card-footer text-body-secondary">
-   Ultimo acceso  <?php echo  date("d-m-Y (H:i:s)",);?>
+   Ultimo acceso  <?php echo  date("d-m-Y (H:i:s)",time());?>
   </div>
 </div>
 <h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>

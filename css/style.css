@@ -19,9 +19,9 @@
   }
 
   
-h6{
-   color: 'aliceblue';
-    float:left;
+.container-fluid .logo{
+   color: 'white';
+   
 }
 .container-fluid .navbar-brand h4{
     
