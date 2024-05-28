@@ -24,7 +24,7 @@ $saldo=mysqli_fetch_array($result);
 if(isset($_SESSION['time']) ) {
 
   //Tiempo en segundos para dar vida a la sesión.
-  $inactivo = 30;
+  $inactivo = 300;
 
   //Calculamos tiempo de vida inactivo.
   $fecha = time() - $_SESSION['time'];
@@ -139,10 +139,13 @@ $_SESSION["nameuser"];?>
   <div class="card-body">
     <h5 class="card-title"> <?php echo strtoupper($_SESSION["nameuser"]);?></h5>
     <p class="card-text">Saldo disponible <h5>$<?php echo number_format($saldo['(sum(valor_a_ahorrar)- sum(valor_a_retirar))'],2);?></h5></p>
-   
+<form method="post" action="../conexionphp/behavior.php">
+         
+      <button class="btn btn-primary" type="submit">Mi comportamiento financiero</button>
+</form>
   </div>
   <div class="card-footer text-body-secondary">
-   Ultimo acceso  <?php echo  date("d-m-Y (H:i:s)",time());?>
+   Ultimo acceso  <?php echo  date('Y-m-d H:i:s', strtotime('-17 hour'));?>
   </div>
 </div>
 <h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>
@@ -185,7 +188,8 @@ $_SESSION["nameuser"];?>
       </div>
     </div>
   </div>
-</div>
+ </div>
+ 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
 </body>
