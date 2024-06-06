@@ -1,18 +1,17 @@
-.navbar-expand-lg .container-fluid{
+.bg-body-secondary .container-fluid{
     z-index: 1;
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    background: rgb(30, 116, 148);
+    background: rgb(229, 236, 238);
     position:fixed;
    top: 0;
     cursor: default;
   }
-  .navbar-expand-lg .container-fluid .navbar-nav:hover{
-    cursor: pointer;
- background: #707068;
-
-  }
+  .dropdown:hover .dropdown-menu {
+    background-color: #66687f;
+    display: block !important;
+}
   #carouselExampleAutoplaying .d-block {
 
     height: 400px;
@@ -55,6 +54,23 @@ color: rgb(245, 250, 238);
     height: 330px;
   
 }
+
+.card {
+    
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+}
+ 
+.transition {
+    -webkit-transform: scale(1.1); 
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
 .card-group .card .card-body{
 
     background-color: rgb(52, 138, 128);
@@ -74,9 +90,14 @@ color: rgb(245, 250, 238);
     color: rgb(209, 232, 176);
 }
 
-.text-center .card-body{
+.bg-secondary {
+    text-align: center;
+color: aliceblue;
 
-    background-color: darkslategray;
+}
+.bg-secondary .card-text{
+color: aliceblue;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
    

@@ -68,7 +68,7 @@ $mysqli->close();
 <body>
 <nav class="navbar navbar-expand-lg bg-body-secondary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="main.php"><img src="../images/hogar.png" alt=""width="40" height="40" class="d-inline-block align-text-top"></a>
+    <a class="navbar-brand" href="main.php"><img src="../images/logo empresa pequeño.png"  class="d-inline-block align-text-top"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -114,7 +114,7 @@ $mysqli->close();
           <a
            class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="../images/User_icon_2.svg.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> <?php echo
-$_SESSION["nameuser"];?>
+ ucwords($_SESSION["nameuser"]);?>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../conexionphp/perfil.php">Perfil</a></li>
@@ -167,8 +167,8 @@ $_SESSION["nameuser"];?>
       <div class="card-body">
         <form action="../conexionphp/mostrarmovimientosxmes.php" method="post">
         <h5 class="card-title">Movimientos por mes</h5>
-        <p class="card-text"> <select name="fecha" class="fecha" id="month" style="color:#0ba842 ;"  width="30" required>
-        <option value="">-----Seleccione mes-----</option>
+        <p class="card-text"> <select name="fecha"class="form-select" aria-label="Default select example" id="month" style="color:#0ba842 ;"   required>
+        <option value="">---Seleccione mes---</option>
                     <option value="1">Enero</option>
                     <option value="2">Febrero</option>
                     <option value="3">Marzo</option>

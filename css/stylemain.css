@@ -13,20 +13,21 @@ padding-left: 30px;
 
 }
 .row  .card-text{
-    height: 25px;
+    height: 20px;
 } 
 .card .card-body{
     border:none;
 }
 form .btn-primary{
- 
-    background-color: #e03246;
+ font-size: small;
+   
+    background-color: #3144c1;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
   
     letter-spacing: .1em;
-    border-radius: .3em;
+    border-radius: 25px;
 }
 .navbar-expand-lg .container-fluid .navbar-collapse .navbar-nav .nav-link:hover{
     cursor: pointer;

@@ -82,7 +82,7 @@ return false;
 <body>
 <nav class="navbar navbar-expand-lg bg-body-secondary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="main.php"><img src="../images/hogar.png" alt=""width="40" height="40" class="d-inline-block align-text-top"></a>
+    <a class="navbar-brand" href="main.php"><img src="../images/logo empresa pequeño.png" alt="" class="d-inline-block align-text-top"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -166,7 +166,7 @@ $_SESSION["nameuser"];?>
     </div>
    </div>
    <div>
-   <button type="submit" class="btn btn-secondary">CAMBIAR</button>
+   <button type="submit" class="btn btn-primary">CAMBIAR</button>
 </div>
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  

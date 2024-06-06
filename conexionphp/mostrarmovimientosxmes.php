@@ -30,7 +30,7 @@ while ($mostrar=mysqli_fetch_array($result)){
    
 echo"<table class='format'>";
 echo'<div class="text-center">';
-echo' <img src="../images/logo162645.png" class="rounded" alt="...">';
+echo' <img src="../images/logo corp1.png" class="rounded" alt="...">';
 echo'</div>';
 echo'<h6 class="nom">Apreciado Cliente</h6>';
 echo"<tr><td><h6>",strtoupper($mostrar['nombres']),"</h6></td></tr>";

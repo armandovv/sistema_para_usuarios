@@ -1,13 +1,17 @@
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <header>
 <nav class="navbar bg-body-tertiary ">
   <form class="container-fluid justify-content-start">
     <button class="btn btn-outline-success me-2" type="button"  onclick="createPDF()">Descargar certificado</button>
-    <a href='../paginashtml/main.php'> <button class="btn btn-sm btn-outline-secondary" type="button">VOLVER</button></a>
+    <a href='../paginashtml/main.php'> <button class="btn btn-sm btn-primary" type="button">VOLVER</button></a>
   </form>
 </nav>
 </header>
 <div class="doc" id='content'>
+<center><div class="logo">
+  <img src="../images/logo corp1.png" class="rounded" alt="..."/>
+</div></center>
 <?php
 session_start();
 $mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
@@ -25,10 +29,13 @@ $sql="select distinct nombres, id from login_usuario inner join usuarios on usua
 $result=mysqli_query($mysqli, $sql);
 if($result->num_rows > 0){
 while ($mostrar=mysqli_fetch_array($result)){
-
+ 
+  echo '<br>';
+  echo '</br>';
 echo"<center><table>";
-echo'<img src="../images/logo162645.png" class="rounded" alt="...">';
-echo'<tr><td><h5><center>CERTIFICADO</h5></center></td></tr>';
+
+echo'<tr><td><h5><center>CERTIFICADO</center></h5></td></tr>';
+echo'<tr><td></td></tr>';
 echo"<tr><td>",'Por medio de la presente, hacemos constar que el señor(a) ',ucwords($mostrar['nombres']).' con documento ',$mostrar['id'].':'."</td></tr>" ; }
 $sql=" select min(fecha) from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
 $result=mysqli_query($mysqli, $sql);
@@ -91,14 +98,14 @@ if(isset($_SESSION['time']) ) {
 <style>
  
  
-.doc{
 
-width: 880 px;
-margin-left: auto;
-    margin-right: auto;
+
+ header .bg-body-tertiary .container-fluid  .btn-primary{
+
+border-radius: 30px;
 }
 
-
+    
 
 
 

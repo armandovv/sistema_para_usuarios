@@ -70,12 +70,12 @@ box-shadow: -14px -13px 10px -3px rgba(0,0,0,0.75);
 }
 .contact-form form button {
     background-color: #b70e21;
-    border: 0;
+     
     text-transform: uppercase;
     padding: 1em;
     font-size: 1em;
     letter-spacing: .1em;
-    border-radius: .3em;
+    border-radius: 30px;
 }
 .caja_popup 
 {

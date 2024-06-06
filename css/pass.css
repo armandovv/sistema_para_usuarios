@@ -12,9 +12,10 @@ form .mb-3{
  border-color: blue;
 
   }
-  form .btn-secondary{
+  form .btn-primary{
     padding-left: 20px;
     max-width: 600px;
+   border-radius: 30px;
   }
   .dropdown:hover .dropdown-menu {
     background-color: #a1a29d;

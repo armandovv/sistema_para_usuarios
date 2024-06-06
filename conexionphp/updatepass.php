@@ -29,9 +29,7 @@ if (!$conn)
 		$contraseña = password_hash($contraseña,PASSWORD_DEFAULT);
 		
 		$query =mysqli_query($conn,"update login_usuario set contraseña='".$contraseña."' where id='".$id."'");
-		echo '<center><h3>SE CAMBIO EXITOSAMENTE LA CONTRASEÑA</h3><center><br> ';
-			
-			echo"<a href='../paginashtml/main.php'>VOLVER</a>";
+		
 			if(isset($_SESSION['time']) ) {
 
 				//Tiempo en segundos para dar vida a la sesión.
@@ -62,19 +60,30 @@ if (!$conn)
 			echo'<script>alert("SE CERRO LA SESION DE FORMA INESPERADA");</script>';
 			echo "<script>location.href='../index.html'</script>";
 			}   
-		
-		
-			
-			
-			
-		
-		
-	
-
-
-	
-		
-	
-        
-
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimientos financieros</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+.mb-3 {
+	margin-left: auto;
+    margin-right: auto;}
+
+</style>
+</head>
+<body>
+<div class="card mb-3" style="width: 18rem;">
+  <img src="../images/ezgif.com-animated-gif-maker.gif" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Cambio de contraseña realizado</h5>
+    <p class="card-text">Contraseña cambiada exitosamente</p>
+    <p class="card-text"> <a href="../paginashtml/formpass.php" class="btn btn-primary">LISTO</a></p>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
