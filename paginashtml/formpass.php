@@ -148,6 +148,7 @@ $_SESSION["nameuser"];?>
     </div>
   </div>
 </nav>
+</nav><br><br><br>
 <h2>Cambiar contraseña</h2>
 <form action="../conexionphp/updatepass.php" method="post"  onsubmit="return validar()">
 <div class="mb-3 row">

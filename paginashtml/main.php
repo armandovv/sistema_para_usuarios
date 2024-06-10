@@ -132,6 +132,7 @@ $mysqli->close();
     </div>
   </div>
 </nav>
+</nav><br><br><br>
 <div class="card text-center">
   <div class="card-header">
     AUTOGESTION SISTEMA DE INFORMACION AHORROS FAMILIAR

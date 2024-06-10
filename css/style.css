@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    background: rgb(229, 236, 238);
+    background: #e8f2f3;
     position:fixed;
    top: 0;
     cursor: default;
@@ -83,7 +83,8 @@ color: rgb(245, 250, 238);
 
 .card-group .card .card-body{
 
-    background-color: rgb(52, 138, 128);
+    background: rgb(52, 138, 128);
+    text-align: center;
 }
 
 .card-group .card .card-img-top{
@@ -91,7 +92,7 @@ color: rgb(245, 250, 238);
     height: 200px;
 }
 .card .card-body .card-text{
-
+    font-size: small;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(235, 243, 222);
 }
@@ -100,14 +101,15 @@ color: rgb(245, 250, 238);
     color: rgb(209, 232, 176);
 }
 
-.bg-secondary {
+ .bg-dark{
+    background:rgb(3, 2, 49);
     text-align: center;
-color: aliceblue;
+
 
 }
-.bg-secondary .card-text{
+.bg-dark .card-text{
 color: aliceblue;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
    

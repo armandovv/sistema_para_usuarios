@@ -1,4 +1,13 @@
-
+.bg-body-secondary .container-fluid{
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  background: #e8f2f3;
+  position:fixed;
+ top: 0;
+  cursor: default;
+}
 
 .info{
 

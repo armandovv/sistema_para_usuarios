@@ -1,17 +1,14 @@
 body{
-    position: relative;
-    margin: 0;
    
+   
+    
+    background: url('../images/fondo ahorro login.png')no-repeat center center fixed; 
+    backdrop-filter: saturate(300%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 105%;
-    min-height: 100%;
-    transform: translateX(calc((100% - 100vw) / 2));
-    z-index: -2;
-  }
 
 
 
@@ -19,20 +16,12 @@ video {
     box-sizing: border-box;
 }
 .content {
-    max-width: 600px;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 6em;
 }  
-.logo{
-    text-align: center;
-    font-size: 2em;
-}
 
-
-.logo span {
-    color: #e7ebf4;
-}
 .contact-wrapper {
     box-shadow: 0 0 20px 0 rgba(255,255,255,.3);
     
@@ -47,10 +36,10 @@ video {
 
 
 .contact-form {
-    background-color: #b3bfd3;
-    -webkit-box-shadow: -14px -13px 10px -3px rgba(0,0,0,0.75);
--moz-box-shadow: -14px -13px 10px -3px rgba(0,0,0,0.75);
-box-shadow: -14px -13px 10px -3px rgba(0,0,0,0.75);
+    background-color: #e6e9ed;
+    -webkit-box-shadow: -26px 7px 14px -11px rgba(0,0,0,0.75);
+    -moz-box-shadow: -26px 7px 14px -11px rgba(0,0,0,0.75);
+    box-shadow: -26px 7px 14px -11px rgba(0,0,0,0.75);
 }
 
 .contact-form form p{

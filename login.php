@@ -74,7 +74,7 @@ if (isset($_POST['login_button'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<video autoplay="true" muted="true" loop="true"> <source src="./images/videov.mp4" type="video/mp4"></video>
+
 <br><br>
   <div class="caja_popup" id="formrecuperar">
    
@@ -84,7 +84,7 @@ if (isset($_POST['login_button'])) {
               <tr> 
                   <td><b> Documento</b></td>
                   <td><input type="text" name="documento" required class="cajaentradatexto"></td>
-                  <input class="form-control" type="hidden" name="charset" value="8" maxlength="1">
+                  <input class="form-control" type="hidden" name="charset" value="6" maxlength="1">
               </tr>
               <tr> 	
                  <td colspan="2">
@@ -102,7 +102,7 @@ if (isset($_POST['login_button'])) {
                 <tr> 
                     <td><b> Documento</b></td>
                     <td><input type="text" name="documento" required class="cajaentradatexto"></td>
-                    <input class="form-control" type="hidden" name="chars" value="8" maxlength="1">
+                    <input class="form-control" type="hidden" name="chars" value="6" maxlength="1">
                 </tr>
                 <tr> 	
                    <td colspan="2">
@@ -115,7 +115,7 @@ if (isset($_POST['login_button'])) {
       </div>
       <section class="sect">
   <div class="content">
-    <h1 class="logo"><span>INICIO DE SESION</span></h1>
+  
     <?php
               if (count($errors) > 0) {
                 echo "<div class='alert alert-danger' role='alert'>";

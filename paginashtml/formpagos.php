@@ -140,7 +140,7 @@ $_SESSION["nameuser"];?>
       </form>
     </div>
   </div>
-</nav>
+</nav><br><br><br>
 <h2>Pagos</h2>
 <form name="retirar" action="../conexionphp/pagos.php" method="post">
 <div class="input-group">

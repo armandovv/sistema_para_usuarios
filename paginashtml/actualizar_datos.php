@@ -122,6 +122,7 @@ $_SESSION["nameuser"];?>
     </div>
   </div>
 </nav>
+</nav><br><br><br>
 <form action="../conexionphp/actualizaremail.php" method="post">
 <div class="input-group mb-3">
 <input type="hidden" name="documento" id="documento" value="<?php echo $_SESSION["id"];?>">

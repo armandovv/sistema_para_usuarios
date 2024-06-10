@@ -19,7 +19,7 @@ $mostrar		= mysqli_fetch_array($queryusuario);
 function generatePassword($length)
 {
 	$key = "";
-	$pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+	$pattern = "1234567890";
 	//$pattern = "1234567890abcdefghijklmñnopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ.-_*/=[]{}#@|~¬&()?¿";
 	$max = strlen($pattern)-1;
 	for($i = 0; $i < $length; $i++){

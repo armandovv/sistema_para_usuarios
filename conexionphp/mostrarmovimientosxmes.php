@@ -37,20 +37,21 @@ echo"<tr><td><h6>",strtoupper($mostrar['nombres']),"</h6></td></tr>";
 echo"<tr><td><h6>" ,'documento ',$mostrar['id']."</h6></td></tr>";
 echo"</table>"; } 
 echo "<table class='format' border=1>";  
- echo "<td width=100>TOTAL RETIRADO</td>";  
+ echo "<td width=100>TOTAL RETIRADO EN EL MES</td>";  
 echo "<td width=100>TOTAL AHORRADO</td>"; 
 echo "</table>"; 
 
-$sql = "SELECT sum(valor_a_retirar), sum(valor_a_ahorrar)-sum(valor_a_retirar) from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
+$sql = "SELECT sum(valor_a_retirar)  from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where  year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
 $result=mysqli_query($mysqli, $sql);
-
-while ($mostrar=mysqli_fetch_array($result))
-{ 
+$sql="select sum(valor_a_ahorrar)-sum(valor_a_retirar)  from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
+$result1=mysqli_query($mysqli, $sql);
+$mostrar=mysqli_fetch_array($result);
+$mostrar1=mysqli_fetch_array($result1);
 echo "<table class='format' border=1>";  
  
-    echo "<td width=100>",number_format($mostrar['sum(valor_a_retirar)'],2)."</td>";  
-    echo "<td width=100>",number_format($mostrar['sum(valor_a_ahorrar)-sum(valor_a_retirar)'],2)."</td>";  
-	} 
+    echo "<td width=100>",number_format($mostrar['sum(valor_a_retirar)'],1)."</td>";  
+    echo "<td width=100>",number_format($mostrar1['sum(valor_a_ahorrar)-sum(valor_a_retirar)'],1)."</td>";  
+	
 echo "</table>";
 
 $fecha = $_POST['fecha'];
@@ -83,8 +84,8 @@ echo "<table  class='enum-3' border=1>";
  
     echo "<td width=100>",$mostrar['id_movimiento']."</td>";  
     echo "<td width=150>",$mostrar['fecha']."</td>";  
-	echo "<td width=200>",number_format($mostrar['valor_a_ahorrar'],2)."</td>";  
-	echo "<td width=200>",number_format($mostrar['valor_a_retirar'],2)."</td>";  
+	echo "<td width=200>",number_format($mostrar['valor_a_ahorrar'],1)."</td>";  
+	echo "<td width=200>",number_format($mostrar['valor_a_retirar'],1)."</td>";  
     echo "<td width=200>",$mostrar['concepto']."</td>"; 
 }  
 echo "</table>"; 
