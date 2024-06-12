@@ -2,44 +2,58 @@ body{
    
    
     
-    background: url('../images/fondo ahorro login.png')no-repeat center center fixed; 
-    backdrop-filter: saturate(300%);
+    background: url('../images/shopping-with.jpg')no-repeat center center fixed; 
+   
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+.title{
 
-
+    font-family: fantasy;
+    font-weight: 600;
+    color: #180653;
+}
+.description{
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-weight: 600;
+color: #180653;
+}
 
 *{
     box-sizing: border-box;
 }
-.content {
+.content  {
+    
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 6em;
-}  
+    
+    margin-bottom: auto;
+}
+
+
+
+
 
 .contact-wrapper {
     box-shadow: 0 0 20px 0 rgba(255,255,255,.3);
     
 }
+
     
 
 
 .contact-wrapper > * {
-    padding: 1em;
+      padding: 1em;
     border-radius: 2%;
 }
 
 
 .contact-form {
-    background-color: #e6e9ed;
-    -webkit-box-shadow: -26px 7px 14px -11px rgba(0,0,0,0.75);
-    -moz-box-shadow: -26px 7px 14px -11px rgba(0,0,0,0.75);
-    box-shadow: -26px 7px 14px -11px rgba(0,0,0,0.75);
+    background-color: rgba(198, 227, 242, 0.464);
+ 
 }
 
 .contact-form form p{
@@ -54,7 +68,7 @@ body{
     border: none;
     background: none;
     outline: 0;
-    color: #fff;
+    color: #211a1a;
     border-bottom: 1px solid #d63031;
 }
 .contact-form form button {

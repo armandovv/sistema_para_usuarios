@@ -114,9 +114,11 @@ if (isset($_POST['login_button'])) {
         </form>
       </div>
       <section class="sect">
-  <div class="content">
-  
-    <?php
+      <h2 class="title"> &nbsp;  &nbsp; Bienvenido a su zona transaccional </h2>
+      <p class="description">  &nbsp; &nbsp; Realice sus consultas, pagos, descargue sus extractos y actualice sus datos en un click</p>
+
+       <div class="content">
+     <?php
               if (count($errors) > 0) {
                 echo "<div class='alert alert-danger' role='alert'>";
                 foreach ($errors as $error) {
@@ -125,11 +127,13 @@ if (isset($_POST['login_button'])) {
                 echo "</div>";
               }
               ?>
+          
+<div class="contact-wrapper">
 
-    <div class="contact-wrapper">
-      <!-- FORMULARIO -->
+ <!-- FORMULARIO -->
       <div class="contact-form">
         <!-- <h3>Contactanos</h3> -->
+        <img src="./images/logo empresa pequeño.png">
         <form action="login.php" method="post">
           <p>
             <label for="fullname">DOCUMENTO</label>
@@ -148,6 +152,8 @@ if (isset($_POST['login_button'])) {
         </form>
       </div>
     </div>
+</div>
+   
   </div>
   </section>
   <script src="./js/recuperar.js"></script>
