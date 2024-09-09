@@ -72,7 +72,7 @@ $css = '
         }
         p {
             color: #333333;
-            font-size: 12px;
+            font-size: 11px;
             line-height: 1.5;
         }
         .highlight {
