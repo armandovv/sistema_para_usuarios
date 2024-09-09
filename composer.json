@@ -1,0 +1,11 @@
+{
+    "name": "arvar/sistema_para_usuarios",
+    "autoload": {
+        "psr-4": {
+            "Arvar\\SistemaParaUsuarios\\": "src/"
+        }
+    },
+    "require": {
+        "tecnickcom/tcpdf": "^6.7"
+    }
+}

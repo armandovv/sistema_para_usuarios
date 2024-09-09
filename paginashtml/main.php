@@ -97,7 +97,7 @@ $mysqli->close();
     </div>
   </div>
 </div></li>
-            <li><a class="dropdown-item" href="solicitud.html">Solicitud credito</a></li>
+            <li><a class="dropdown-item" href="../conexionphp/solicitud.php">Solicitud credito</a></li>
            
           </ul>
         </li>
@@ -157,7 +157,7 @@ $mysqli->close();
         <h5 class="card-title">Movimientos</h5>
         <form action="../conexionphp/mostrarmovimientos.php" method="post">
         <p class="card-text"></p>
-
+<br>
         <button type="submit" class="btn btn-primary">Consultar</button>
 </form>
       </div>
@@ -183,8 +183,9 @@ $mysqli->close();
                      <option value="11">Noviembre</option>
                      <option value="12">Diciembre</option>
                     </select></p>
+                    <br>
 
-        <button type="submit" class="btn btn-primary">Consultar</button> 
+       <button type="submit" class="btn btn-primary">Consultar</button> 
 </form>
       </div>
     </div>

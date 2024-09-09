@@ -24,8 +24,16 @@ padding-left: 30px;
 .row  .card-text{
     height: 20px;
 } 
+.card-text .form-select{
+  max-width: 230px;
+}
+.card .card-header{
+
+  background-color: rgb(242, 181, 112);
+}
 .card .card-body{
     border:none;
+    background-color: rgb(198, 204, 212);
 }
 form .btn-primary{
  font-size: small;

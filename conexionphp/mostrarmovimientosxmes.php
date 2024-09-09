@@ -1,58 +1,23 @@
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<header>
-<nav class="navbar bg-body-tertiary ">
-  <form class="container-fluid justify-content-start">
-    <button class="btn btn-outline-success me-2" type="button"  onclick="createPDF()">Descargar extracto</button>
-    <a href='../paginashtml/main.php'> <button class="btn btn-sm btn-outline-secondary" type="button">VOLVER</button></a>
-  </form>
-</nav>
-</header>
-<div class="doc" id='content'>
 <?php
 session_start();
+require_once('../vendor/tecnickcom/tcpdf/tcpdf.php'); // Ajusta el path según tu configuración
 $mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
-
-if ($mysqli->connect_errno) {
-	echo "lo sentimos, este sitio web esta experimentando problemas.";
+  if ($mysqli->connect_errno) {
+    echo'Error de conexión: ';
 	
 	exit;
 }
 else if
+
 (!empty($_SESSION['nameuser']))
 
 {
 //echo "la coneccion fue exitosa";
-$fecha = $_POST['fecha'];
-$sql= "select id, nombres from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
-$result=mysqli_query($mysqli, $sql);
-while ($mostrar=mysqli_fetch_array($result)){
-   
-echo"<table class='format'>";
-echo'<div class="text-center">';
-echo' <img src="../images/logo corp1.png" class="rounded" alt="...">';
-echo'</div>';
-echo'<h6 class="nom">Apreciado Cliente</h6>';
-echo"<tr><td><h6>",strtoupper($mostrar['nombres']),"</h6></td></tr>";
-echo"<tr><td><h6>" ,'documento ',$mostrar['id']."</h6></td></tr>";
-echo"</table>"; } 
-echo "<table class='format' border=1>";  
- echo "<td width=100>TOTAL RETIRADO EN EL MES</td>";  
-echo "<td width=100>TOTAL AHORRADO</td>"; 
-echo "</table>"; 
 
-$sql = "SELECT sum(valor_a_retirar)  from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where  year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$fecha = $_POST['fecha'];
+$sql= "select id, nombres from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id='".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
 $result=mysqli_query($mysqli, $sql);
-$sql="select sum(valor_a_ahorrar)-sum(valor_a_retirar)  from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
-$result1=mysqli_query($mysqli, $sql);
 $mostrar=mysqli_fetch_array($result);
-$mostrar1=mysqli_fetch_array($result1);
-echo "<table class='format' border=1>";  
- 
-    echo "<td width=100>",number_format($mostrar['sum(valor_a_retirar)'],1)."</td>";  
-    echo "<td width=100>",number_format($mostrar1['sum(valor_a_ahorrar)-sum(valor_a_retirar)'],1)."</td>";  
-	
-echo "</table>";
 
 $fecha = $_POST['fecha'];
 $sql = "select distinct month(fecha) from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
@@ -60,114 +25,132 @@ setlocale(LC_ALL, 'spanish');
 $monthNum  = $fecha;
 $dateObj   = DateTime::createFromFormat('!m', $monthNum);
 $monthName = strftime('%B', $dateObj->getTimestamp());
+$sql1 = "SELECT sum(valor_a_retirar) from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where  year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$sql2="select sum(valor_a_ahorrar)-sum(valor_a_retirar) as saldo from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
+$result1=mysqli_query($mysqli, $sql1);
+$result2=mysqli_query($mysqli, $sql2);
+
+$mostrar1=mysqli_fetch_array($result1);
+$mostrar2=mysqli_fetch_array($result2);
+$sql3 = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$result3=mysqli_query($mysqli, $sql3); 
+$mostrar3=mysqli_fetch_array($result3);
+// Crear una instancia de TCPDF
+$pdf = new TCPDF();
+
+// Establecer información del documento
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('Tu Nombre');
+$pdf->SetTitle('Título del PDF');
+$pdf->SetSubject('Asunto del PDF');
+$pdf->SetKeywords('TCPDF, PDF, ejemplo, prueba');
+
+// Establecer las propiedades del documento
+$pdf->SetHeaderData('', 0, 'SISTEMA DE INFORMACION AHORRO FAMILIAR', 'Extracto mes '.$monthName.' ');
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+// Configurar márgenes
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+// Establecer el formato de página
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// Agregar una página
+$pdf->AddPage();
 
 
+// Estilo CSS para el PDF
+$css = '
+    <style>
+      h1 {
+            color: #0044cc;
+            font-size: 20px;
+            text-align: left;
+        }
+        p {
+            color: #333333;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .highlight {
+            background-color: #ffff00;
+            padding: 5px;
+        }
+    </style>
+';
+$imagePath = '../images/logo corp1.png';
+$imgWidth = 50; // Ancho en mm
+$imgHeight = 20; // Alto en m
+$pageWidth = $pdf->getPageWidth();
+$pageHeight = $pdf->getPageHeight();
+// Calcular las coordenadas X e Y para centrar la imagen
+$x = ($pageWidth - $imgWidth) / 2; // Centrar horizontalmente
+$y = 20; // Distancia desde la parte superior (ajusta según necesidad)
+
+// Incluir la imagen en el PDF
+$pdf->Image($imagePath, $x, $y, $imgWidth, $imgHeight, '', '', 'T', true, 300, '', false, false, 0, false, false, false);
+$textY = $y + $imgHeight + 1; // Ajusta el valor 10 mm según la separación deseada
+
+// Ajustar la posición del contenido HTML para que comience debajo de la imagen
+$pdf->SetY($textY);
+$html = $css . '
+  
+<h1>Apreciado Cliente</h1>
+<p>  '.htmlspecialchars($mostrar['nombres']).'</p>
+<p><strong>Documento</strong> </p>
+<p> '.htmlspecialchars($mostrar['id']).'</p>
+<p>TOTAL RETIRADO EN EL MES <strong>$'.number_format($mostrar1['sum(valor_a_retirar)'],1).'</strong></p>
+<p>TOTAL AHORRADO <strong>$'.number_format($mostrar2['saldo'],1).'</strong></p>
+';
 
 
-echo"<CENTER><H5>",'MOVIMIENTOS ' ,strtoupper($monthName). "</H5></center>";
-
-echo'<center><table class="enum-3" border=1>';
-
-echo'<th width=100 bgcolor="green">ID</th>';
-echo'<th width=150 bgcolor="green">FECHA</th>';
-echo'<th width=200 bgcolor="green">VALOR A AHORRAR</th>';
-echo'<th width=200 bgcolor="green">VALOR A RETIRAR</th>';
-echo'<th width=200 bgcolor="green">CONCEPTO</th>';
-$sql = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
-$result=mysqli_query($mysqli, $sql);  
-if($result->num_rows > 0){
-{
-while ($mostrar=mysqli_fetch_array($result))
-{
-	
-echo "<table  class='enum-3' border=1>";  
- 
-    echo "<td width=100>",$mostrar['id_movimiento']."</td>";  
-    echo "<td width=150>",$mostrar['fecha']."</td>";  
-	echo "<td width=200>",number_format($mostrar['valor_a_ahorrar'],1)."</td>";  
-	echo "<td width=200>",number_format($mostrar['valor_a_retirar'],1)."</td>";  
-    echo "<td width=200>",$mostrar['concepto']."</td>"; 
-}  
-echo "</table>"; 
-
-
-}
- }
-else { echo' <script>alert("NO HAY MOVIMIENTOS PARA  '.strtoupper($monthName).'")</script> ';
-	echo "<script>location.href='../paginashtml/main.php'</script>";
-}if(isset($_SESSION['time']) ) {
-
-  //Tiempo en segundos para dar vida a la sesión.
-  $inactivo = 300;
-
-  //Calculamos tiempo de vida inactivo.
-  $fecha = time() - $_SESSION['time'];
-
-      //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
-      if($fecha > $inactivo)
-      {
-          //Removemos sesión.
-          session_unset();
-          //Destruimos sesión.
-          session_destroy();              
-          //Redirigimos pagina.
-          header('location: ended_sesion.php');
-
-          exit();
+$tableHtml = '
+    <h2><strong>MOVIMIENTOS ' .strtoupper($monthName). '</strong></h2>
+    <table border="1" cellpadding="2" cellspacing="0" align="center">
+        <thead>
+            <tr>
+                <th style="background-color:#f2f2f2;">MOVIMIENTO</th>
+                <th style="background-color:#f2f2f2;">FECHA</th>
+                <th style="background-color:#f2f2f2;">VALOR A AHORRAR</th>
+                <th style="background-color:#f2f2f2;">VALOR A RETIRAR</th>
+                <th style="background-color:#f2f2f2;">CONCEPTO</th>
+            </tr>
+        </thead>
+        <tbody>';
+        if($result3->num_rows > 0){
+        while ($mostrar3=mysqli_fetch_array($result3)) {
+          $tableHtml .= '<tr>';
+          $tableHtml .= '<td>' . $mostrar3['id_movimiento']. '</td>';
+          $tableHtml .= '<td>' . htmlspecialchars($mostrar3['fecha']) . '</td>';
+          $tableHtml .= '<td>' .number_format($mostrar3['valor_a_ahorrar'],1). '</td>';
+          $tableHtml .= '<td>'.number_format($mostrar3['valor_a_retirar'],1). '</td>';
+          $tableHtml .= '<td>' . htmlspecialchars($mostrar3['concepto']) . '</td>';
+          $tableHtml .= '</tr>';
       
-} else {
-  //Activamos sesion tiempo.
-  $_SESSION['time'] = time();
-}
-} 
-   }else{
-echo'<script>alert("SE CERRO LA SESION DE FORMA INESPERADA");</script>';
-echo "<script>location.href='../index.html'</script>";
-}
+        }
+      $tableHtml .= '</tbody></table>';
+        
+      // Concatenar el HTML existente con el HTML de la tabla
+      $fullHtml = $html . $tableHtml;
+
+        
+// Escribir el contenido en el PDF
+$pdf->writeHTML($fullHtml, true, false, true, false, '');
+
+// Cerrar y generar el archivo PDF
+$pdf->Output('ejemplo.pdf', 'D'); // 'I' para enviar el archivo al navegador
 
 
+}else{
+
+  header('location: no_encontrado.php');
+}
+}
+$mysqli->close();
 ?>
-</div>
-<br>
-<style>
-.doc{
 
-width: 880 px;
-margin-left: auto;
-    margin-right: auto;
-}
- .enum-3{
-	width: 780 px;
 
-}
-.doc .format{
 
-	margin-left: 40px;
-}
- .nom{
-	margin-left: 40px;
-}
-
-</style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script>
-    function createPDF() {
-      var element = document.getElementById('content');
-var opt = {
-  margin:       1,
-  filename:     'extracto.pdf',
-  image:        { type: 'jpeg', quality: 0.98 },
-  html2canvas:  { scale: 2 },
-  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-};
-
-// New Promise-based usage:
-html2pdf().set(opt).from(element).save();
-
-// Old monolithic-style usage:
-html2pdf(element, opt);
-    }
-</script>	</center>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  

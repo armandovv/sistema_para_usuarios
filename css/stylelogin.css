@@ -8,18 +8,23 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    backdrop-filter: grayscale(100%);
+ 
 }
 .title{
 
     font-family: fantasy;
     font-weight: 600;
     color: #180653;
+    text-align: center;
 }
 .description{
 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 font-weight: 600;
 color: #180653;
+text-align:center;
 }
+
 
 *{
     box-sizing: border-box;
@@ -31,6 +36,7 @@ color: #180653;
     margin-right: auto;
     
     margin-bottom: auto;
+    
 }
 
 
@@ -48,11 +54,17 @@ color: #180653;
 .contact-wrapper > * {
       padding: 1em;
     border-radius: 2%;
+   
 }
 
 
 .contact-form {
-    background-color: rgba(198, 227, 242, 0.464);
+    background-color:  rgba(198, 227, 242, 0.464);
+     
+    border-width: 2px;
+  border-style: solid;
+  border-color:#d63031;
+  border-radius: 10%;
  
 }
 
@@ -68,12 +80,13 @@ color: #180653;
     border: none;
     background: none;
     outline: 0;
-    color: #211a1a;
+    
     border-bottom: 1px solid #d63031;
 }
 .contact-form form button {
     background-color: #b70e21;
-     
+    color: #f4ecec;
+     font-weight: 600;
     text-transform: uppercase;
     padding: 1em;
     font-size: 1em;

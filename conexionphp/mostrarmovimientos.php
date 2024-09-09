@@ -122,6 +122,7 @@ if(isset($_SESSION['time']) ) {
 
 
 ?>
+
 </div>
 <center><button type="input"><a href="javascript:imprSelec('content')">IMPRIMIR</a></button><br>
 <a href='../paginashtml/main.php'>VOLVER</a>

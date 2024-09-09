@@ -103,11 +103,15 @@ header .bg-body-tertiary .container-fluid  .btn-primary{
 
 border-radius: 30px;
 }
-
-
-
-
-
+.logo{
+  background: url('../images/header13.png')no-repeat center center fixed; 
+   
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+  
+}
 
 </style>
 
