@@ -32,16 +32,16 @@ $result2=mysqli_query($mysqli, $sql2);
 
 $mostrar1=mysqli_fetch_array($result1);
 $mostrar2=mysqli_fetch_array($result2);
-$sql3 = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$sql3 = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
 $result3=mysqli_query($mysqli, $sql3); 
-$mostrar3=mysqli_fetch_array($result3);
+
 // Crear una instancia de TCPDF
 $pdf = new TCPDF();
 
 // Establecer información del documento
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Tu Nombre');
-$pdf->SetTitle('Título del PDF');
+$pdf->SetTitle('extracto'.$monthName.'');
 $pdf->SetSubject('Asunto del PDF');
 $pdf->SetKeywords('TCPDF, PDF, ejemplo, prueba');
 
@@ -73,7 +73,7 @@ $css = '
         p {
             color: #333333;
             font-size: 11px;
-            line-height: 1.5;
+            line-height: 1;
         }
         .highlight {
             background-color: #ffff00;
@@ -109,13 +109,13 @@ $html = $css . '
 
 $tableHtml = '
     <h2><strong>MOVIMIENTOS ' .strtoupper($monthName). '</strong></h2>
-    <table border="1" cellpadding="2" cellspacing="0" align="center">
+    <table border="1" cellpadding="4" cellspacing="0" align="center">
         <thead>
             <tr>
                 <th style="background-color:#f2f2f2;">MOVIMIENTO</th>
                 <th style="background-color:#f2f2f2;">FECHA</th>
-                <th style="background-color:#f2f2f2;">VALOR A AHORRAR</th>
-                <th style="background-color:#f2f2f2;">VALOR A RETIRAR</th>
+                <th style="background-color:#f2f2f2;">AHORRO</th>
+                <th style="background-color:#f2f2f2;">RETIROS</th>
                 <th style="background-color:#f2f2f2;">CONCEPTO</th>
             </tr>
         </thead>
@@ -141,7 +141,7 @@ $tableHtml = '
 $pdf->writeHTML($fullHtml, true, false, true, false, '');
 
 // Cerrar y generar el archivo PDF
-$pdf->Output('ejemplo.pdf', 'D'); // 'I' para enviar el archivo al navegador
+$pdf->Output('extracto'.$_SESSION['id'].date('Y-m-d-H:i:s').'.pdf', 'I'); // 'I' para enviar el archivo al navegador
 
 
 }else{
