@@ -41,7 +41,7 @@ $pdf = new TCPDF();
 // Establecer información del documento
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Tu Nombre');
-$pdf->SetTitle('extracto'.$monthName.'');
+$pdf->SetTitle('extracto '.$monthName.'');
 $pdf->SetSubject('Asunto del PDF');
 $pdf->SetKeywords('TCPDF, PDF, ejemplo, prueba');
 
@@ -79,6 +79,9 @@ $css = '
             background-color: #ffff00;
             padding: 5px;
         }
+       table td{
+          font-size: 11px;
+}  
     </style>
 ';
 $imagePath = '../images/logo corp1.png';
@@ -99,7 +102,7 @@ $pdf->SetY($textY);
 $html = $css . '
   
 <h1>Apreciado Cliente</h1>
-<p>  '.htmlspecialchars($mostrar['nombres']).'</p>
+<p> '.htmlspecialchars(ucwords($mostrar['nombres'])).'</p>
 <p><strong>Documento</strong> </p>
 <p> '.htmlspecialchars($mostrar['id']).'</p>
 <p>TOTAL RETIRADO EN EL MES <strong>$'.number_format($mostrar1['sum(valor_a_retirar)'],1).'</strong></p>

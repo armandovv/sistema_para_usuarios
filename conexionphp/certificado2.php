@@ -1,140 +1,134 @@
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<header>
-<nav class="navbar bg-body-tertiary ">
-  <form class="container-fluid justify-content-start">
-    <button class="btn btn-outline-success me-2" type="button"  onclick="createPDF()">Descargar certificado</button>
-    <a href='../paginashtml/main.php'> <button class="btn btn-sm btn-primary" type="button">VOLVER</button></a>
-  </form>
-</nav>
-</header>
-<div class="doc" id='content'>
-<center><div class="logo">
-  <img src="../images/logo corp1.png" class="rounded" alt="..."/>
-</div></center>
 <?php
 session_start();
+require_once('../vendor/tecnickcom/tcpdf/tcpdf.php'); // Ajusta el path según tu configuración
 $mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
-
-if ($mysqli->connect_errno) {
-	echo "lo sentimos, este sitio web esta experimentando problemas.";
+  if ($mysqli->connect_errno) {
+   echo'Error de conexión: ';
 	
 	exit;
 }
 else if
+
 (!empty($_SESSION['nameuser']))
 
 {
-$sql="select distinct nombres, id from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id='".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
+$sql="SELECT distinct
+    id, nombres,
+    min(fecha)
+    
+FROM 
+    ahorros a
+INNER JOIN 
+    usuarios u ON u.documento= a.usuario
+INNER JOIN 
+    login_usuario l ON a.usuario = l.id
+    where id='".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
 $result=mysqli_query($mysqli, $sql);
-if($result->num_rows > 0){
-while ($mostrar=mysqli_fetch_array($result)){
- 
-  echo '<br>';
-  echo '</br>';
-echo"<center><table>";
-
-echo'<tr><td><h5><center>CERTIFICADO</center></h5></td></tr>';
-echo'<tr><td></td></tr>';
-echo"<tr><td>",'Por medio de la presente, hacemos constar que el señor(a) ',ucwords($mostrar['nombres']).' con documento ',$mostrar['id'].':'."</td></tr>" ; }
-$sql=" select min(fecha) from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
-$result=mysqli_query($mysqli, $sql);
-while ($mostrar=mysqli_fetch_array($result)){
-echo "<tr><td>",'posee sus ahorros en nuestro sistema desde la fecha ' ,$mostrar['min(fecha)']."</td></tr>"; }
+$mostrar=mysqli_fetch_array($result);
 
 setlocale(LC_TIME, "spanish");
-echo "<tr><td>" ,"Se expide este certificado a solicitud del interesado el dia ",utf8_encode(strftime("%A %d de %B del %Y")),"</td></tr>"; 
+$pdf = new TCPDF();
+
+// Establecer información del documento
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('Tu Nombre');
+$pdf->SetTitle('Certificado de producto');
+$pdf->SetSubject('Asunto del PDF');
+$pdf->SetKeywords('TCPDF, PDF, ejemplo, prueba');
+
+// Establecer las propiedades del documento
+$pdf->SetHeaderData('', 0, 'SISTEMA DE INFORMACION AHORRO FAMILIAR');
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+// Configurar márgenes
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+// Establecer el formato de página
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// Agregar una página
+$pdf->AddPage();
 
 
-echo"<tr height= 90></tr>";
-echo "<tr><td>Cordialmente</td></tr>"; 
-echo "<tr><td><img src=../images/firma.jpeg width=190 height=75></td></tr>";
-echo "<tr><td>Jorge Armando Varela</td></tr>";  
-echo "<tr> <td>Administrador financiero</td></tr>"; 
-echo'<tr height= 110><td><h5>SISTEMA DE INFORMACION DE AHORROS FAMILIAR</h5></td></tr>';
-echo "</table></center>";
+// Estilo CSS para el PDF
+$css = '
+    <style>
+      h1 { 
+            color: #0044cc;
+            font-size: 20px;
+            text-align: center;
+        }
+        p {
+            color: #333333;
+            font-size: 11px;
+            line-height: 1;
+        }
+        .highlight {
+            background-color: #ffff00;
+            padding: 5px;
+        }
+            
+     
+    </style>
+';
+$imagePath = '../images/logo corp1.png';
+$imgWidth = 50; // Ancho en mm
+$imgHeight = 20; // Alto en m
+$pageWidth = $pdf->getPageWidth();
+$pageHeight = $pdf->getPageHeight();
+// Calcular las coordenadas X e Y para centrar la imagen
+$x = ($pageWidth - $imgWidth) / 2; // Centrar horizontalmente
+$y = 20; // Distancia desde la parte superior (ajusta según necesidad)
+
+// Incluir la imagen en el PDF
+$pdf->Image($imagePath, $x, $y, $imgWidth, $imgHeight, '', '', 'T', true, 300, '', false, false, 0, false, false, false);
+$textY = $y + $imgHeight + 200; // Ajusta el valor 10 mm según la separación deseada
+
+$imagePath1 = '../images/firma.jpeg';
+list($imgWidth1, $imgHeight1) = getimagesize($imagePath1);
+$imgWidth1 = 50; // Ancho en mm
+$imgHeight1 = 20; // Alto en m
+$pageWidth1 = $pdf->getPageWidth();
+$pageHeight1 = $pdf->getPageHeight();
+// Calcular las coordenadas X e Y para centrar la imagen
+$a = ($pageWidth1 - $imgWidth1) / 8; // Centrar horizontalmente
+$b = 179; //
+$pdf->Image($imagePath1, $a, $b, $imgWidth1, $imgHeight1, '', '', 'T', true, 300, '', false, false, 0, false, false, false);
+$textA = $a + 22;
+// Ajustar la posición del contenido HTML para que comience debajo de la imagen
+$pdf->SetY($textY);
+$pdf->SetY($textA); // ajusta la posición vertical para el texto
+
+// Configurar el texto
+
+$html = $css . '
+<p></p> <p></p> <p></p> 
+<h1>Certificado</h1>
+<p>Por medio de la presente, hacemos constar, que el(la) señor(a)<strong> ' .htmlspecialchars(ucwords($mostrar['nombres'])).'</strong>
+con documento de identificacion N.<strong>' .$mostrar['id'].'</strong>:</p>
+<p>Posee sus ahorros en nuestro sistema desde la fecha '.$mostrar['min(fecha)'].'.</p>
+
+<p>Se expide este certificado a solicitud del interesado el dia '.utf8_encode(strftime("%A %d de %B del %Y")).'
+</p>
+<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+
+Cordialmente:
+<p></p><p></p>
+<p></p><p></p>
+Jorge Armando Varela
+<p>Administrador financiero</p><p></p><p></p><p></p>
+<p><strong>SISTEMA DE INFORMACION AHORRO FAMILIAR</strong></p>
 
 
+
+
+';
+$pdf->writeHTML($html, true, false, true, false, '');
+
+// Cerrar y generar el archivo PDF
+$pdf->Output('certificacion'.$_SESSION['id'].date('Y-m-d-H:i:s').'.pdf', 'I');
 }
-else { echo' <script>alert("USUARIO NO EXISTE EN LA BASE DE DATOS")</script> ';
-	echo "<script>location.href='../paginas/mostrar_estado.php'</script>";
-}
-if(isset($_SESSION['time']) ) {
-
-  //Tiempo en segundos para dar vida a la sesión.
-  $inactivo = 300;
-
-  //Calculamos tiempo de vida inactivo.
-  $fecha = time() - $_SESSION['time'];
-
-      //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
-      if($fecha > $inactivo)
-      {
-          //Removemos sesión.
-          session_unset();
-          //Destruimos sesión.
-          session_destroy();              
-          //Redirigimos pagina.
-          header('location: ../conexionphp/ended_sesion.php');
-
-          exit();
-      
-} else {
-  //Activamos sesion tiempo.
-  $_SESSION['time'] = time();
-}
-} 
-  
-}else{
-
-  echo'<script>alert("SE CERRO LA SESION DE FORMA INESPERADA");</script>';
-  echo "<script>location.href='../index.html'</script>";
-
-}
-
-
 ?>
-</div>
-<style>
- 
- 
-
-
- header .bg-body-tertiary .container-fluid  .btn-primary{
-
-border-radius: 30px;
-}
-
-    
-
-
-
-
-</style>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script>
-    function createPDF() {
-      var element = document.getElementById('content');
-      
-     if (confirm('desea descargar certificado de ahorros')){
-    
-var opt = {
-  margin:       1,
-  filename:     'certificado de ahorro.pdf',
-  image:        { type: 'jpeg', quality: 0.98 },
-  html2canvas:  { scale: 2 },
-  jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-};
-
-// New Promise-based usage:
-html2pdf().set(opt).from(element).save();
-
-// Old monolithic-style usage:
-html2pdf(element, opt);
-    }}
-</script></center>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
