@@ -2,26 +2,26 @@ body{
    
    
     
-    background: url('../images/shopping-with.jpg')no-repeat center center fixed; 
+    background: url('../images/captura-de-pantalla-2023-11-03-a-les-15.20.07.png')no-repeat center center fixed; 
    
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    backdrop-filter: grayscale(100%);
+    backdrop-filter: grayscale(40%);
  
 }
 .title{
 
     font-family: fantasy;
     font-weight: 600;
-    color: #180653;
+    color:  #b80e41;
     text-align: center;
 }
 .description{
 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 font-weight: 600;
-color: #180653;
+color: #b80e41;
 text-align:center;
 }
 
@@ -44,7 +44,7 @@ text-align:center;
 
 
 .contact-wrapper {
-    box-shadow: 0 0 20px 0 rgba(255,255,255,.3);
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.397);
     
 }
 
@@ -59,7 +59,7 @@ text-align:center;
 
 
 .contact-form {
-    background-color:  rgba(198, 227, 242, 0.464);
+    background-color:  rgba(248, 253, 255, 0.464);
      
     border-width: 2px;
   border-style: solid;

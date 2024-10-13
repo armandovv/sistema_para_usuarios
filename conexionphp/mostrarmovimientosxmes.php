@@ -142,14 +142,15 @@ $tableHtml = '
         
 // Escribir el contenido en el PDF
 $pdf->writeHTML($fullHtml, true, false, true, false, '');
-
+$numeroDocumento = $_SESSION['id']; // Usa el número de documento como contraseña
+$pdf->SetProtection(array('copy', 'print'), $numeroDocumento, null);
 // Cerrar y generar el archivo PDF
 $pdf->Output('extracto'.$_SESSION['id'].date('Y-m-d-H:i:s').'.pdf', 'I'); // 'I' para enviar el archivo al navegador
 
 
 }else{
 
-  header('location: no_encontrado.php');
+  header('location: no_encontrado.php?fecha='.$fecha.'');
 }
 }
 $mysqli->close();

@@ -12,26 +12,24 @@ if ($mysqli->connect_errno) {
 (!empty($_SESSION['nameuser']))
 { 
 
+$fecha= $_GET['fecha'];
 
-$sql = "select distinct month(fecha) as fecha from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>=2024 and login_usuario.id='".$_SESSION['id']."'";
-$result=mysqli_query($mysqli, $sql);
-while($mostrar=mysqli_fetch_array($result)){
-$fecha =  $mostrar['fecha'];
+
 setlocale(LC_ALL, 'spanish');
-$monthNum  = $fecha;
+$monthNum  =  $_GET['fecha'];
 $dateObj   = DateTime::createFromFormat('!m', $monthNum);
 $monthName = strftime('%B', $dateObj->getTimestamp());
-}
+
 if(isset($_SESSION['time']) ) {
 
     //Tiempo en segundos para dar vida a la sesión.
     $inactivo = 300;
   
     //Calculamos tiempo de vida inactivo.
-    $fecha = time() - $_SESSION['time'];
+    $time = time() - $_SESSION['time'];
   
         //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
-        if($fecha > $inactivo)
+        if($time > $inactivo)
         {
             //Removemos sesión.
             session_unset();

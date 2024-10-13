@@ -12,7 +12,7 @@ else if
 
 {
 
-$sql= "SELECT  sum(valor_a_ahorrar) as suma, sum(valor_a_retirar) as resta from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
+$sql= "SELECT distinct sum(valor_a_ahorrar)-sum(valor_a_retirar) as suma, sum(valor_a_retirar) as resta from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."' order by id_movimiento desc limit 1";
 $result=mysqli_query($mysqli, $sql);
 while ($mostrar=mysqli_fetch_array($result)){
 $ahorro =  $mostrar['suma'];
@@ -103,14 +103,14 @@ const ahorrado = {
     label: "ahorros",
     data: <?php echo json_encode($transac) ?>, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
     backgroundColor: ['rgba(30, 132, 73,0.4)',
-        'rgba(236, 112, 99 ,0.4)', ], // Color de fondo
+        'rgba(236, 112, 100,0.4)', ], // Color de fondo
     borderColor: ['rgba(163,221,203,1)',
         'rgba(232,233,161,1)',], // Color del borde
-    borderWidth: 1,// Ancho del borde
+    borderWidth: 2,// Ancho del borde
 };
 
         new Chart($grafica, {
-            type: 'pie', // Tipo de gráfica
+            type: 'doughnut', // Tipo de gráfica
             data: {
                 labels: etiquetas,
                 datasets: [
@@ -121,14 +121,17 @@ const ahorrado = {
             },
             options: {
                 
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                
-            }
-        });
+                responsive: true,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        
     </script>
     
    

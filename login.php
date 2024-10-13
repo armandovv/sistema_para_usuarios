@@ -72,6 +72,10 @@ if (isset($_POST['login_button'])) {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css ">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+
+
+
 </head>
 <body>
 
@@ -125,14 +129,14 @@ if (isset($_POST['login_button'])) {
       <div class="contact-form">
         <!-- <h3>Contactanos</h3> -->
         <img src="./images/logo empresa pequeño.png" class="im1">
-        <form action="login.php" method="post">
+        <form action="login.php" method="post" >
           <p>
-            <label for="fullname">DOCUMENTO</label>
+            <label for="fullname"><strong>Documento</strong></label>
             <input type="text" name="id" id="id" required/>
           </p>
 
           <p>
-            <label for="email">CONTRASEÑA</label>
+            <label for="email"><strong>Contraseña</label>
             <input type="password" name="contraseña" id="contraseña" required/>
           </p>
           <p class="block">
@@ -141,6 +145,7 @@ if (isset($_POST['login_button'])) {
             <button name="login_button" type="submit">Entrar</button>
           </p>
         </form>
+        
         <?php
               if (count($errors) > 0) {
                 echo "<div class='alert alert-danger' role='alert'>";
@@ -154,11 +159,11 @@ if (isset($_POST['login_button'])) {
       </div>
     </div>
 </div>
-   
+
   </div>
   </section>
   <script src="./js/recuperar.js"></script>
   <script src="./js/crear.js"></script>
- 
+            
 </body>
 </html>
