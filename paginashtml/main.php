@@ -11,7 +11,7 @@ if ($mysqli->connect_errno) {
 
 (!empty($_SESSION['nameuser']))
 { 
- 
+  date_default_timezone_set('America/Bogota');
  $sql= "select id, nombres from login_usuario inner join usuarios on usuarios.documento=login_usuario.id where login_usuario.id= '".$_SESSION['id']."'and nombres='".$_SESSION['nameuser']."'";
 
 $mysqli->query($sql);
@@ -120,7 +120,7 @@ $mysqli->close();
             <li><a class="dropdown-item" href="../conexionphp/perfil.php">Perfil</a></li>
             <li><a class="dropdown-item" href="formpass.php">Cambiar contraseña</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../conexionphp/logout.php">Cerrar sesion</a></li>
+            <li><a id="logoutButton" class="dropdown-item" onclick="logoutButton()">Cerrar sesion</a></li>
           </ul>
         </li>
       
@@ -146,7 +146,7 @@ $mysqli->close();
 </form>
   </div>
   <div class="card-footer text-body-secondary">
-   Ultimo acceso  <?php echo  date('Y-m-d H:i:s', strtotime('-17 hour'));?>
+   Ultimo acceso  <?php echo  date('Y-m-d H:i:s');?>
   </div>
 </div>
 <h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>
@@ -192,7 +192,7 @@ $mysqli->close();
   </div>
  </div>
  
-
+ <script src=../js/log_out.js></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
 </body>
 </html>

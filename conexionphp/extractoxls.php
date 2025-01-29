@@ -26,7 +26,7 @@ else if
 // Consultar los datos de la base de datos
 $fecha = $_POST['fecha'];
 $usuario= $_POST['usuario'];
-$query = "select id_movimiento, fecha, valor_a_ahorrar, valor_a_retirar, concepto from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where year(fecha)= 2024 and month(fecha)='".$fecha."'and usuario ='".$usuario."'";// Ajusta la consulta
+$query = "select id_movimiento, fecha, valor_a_ahorrar, valor_a_retirar, concepto from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where year(fecha)= 2025 and month(fecha)='".$fecha."'and usuario ='".$usuario."'";// Ajusta la consulta
 $result =mysqli_query($mysqli, $query);
 
 // Verificar si hay resultados

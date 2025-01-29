@@ -17,6 +17,13 @@ $sql="select*from login_usuario inner join usuarios on usuarios.documento = logi
 $result=mysqli_query($mysqli, $sql);
 if($result->num_rows > 0){
 $mostrar=mysqli_fetch_array($result);
+// Función para ocultar los primeros dígitos del número de documento
+function maskDocumentNumber($number, $string='****') {
+  
+  $maskLength = substr($number, -4);
+  return $string . $maskLength;
+}
+
   }
   if(isset($_SESSION['time']) ) {
 
@@ -74,12 +81,12 @@ $mostrar=mysqli_fetch_array($result);
     <p class="card-text">Nombres <?php echo ucwords($mostrar['nombres']);?> </p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Numero documento <?php echo $mostrar['documento'];?></li>
+    <li class="list-group-item">Numero documento  <?php echo maskDocumentNumber($mostrar['documento']);?></li>
     <li class="list-group-item">Correo electronico <?php echo $mostrar['email'];?></li>
-    <li class="list-group-item">Telefono de contacto <?php echo $mostrar['telefono'];?></li>
+    <li class="list-group-item">Telefono de contacto <?php echo maskDocumentNumber($mostrar['telefono']);?></li>
   </ul>
   <div class="card-body">
-    <a href="../paginashtml/actualizar_datos.php" class="card-link">Actualizar datos</a>
+    <a href="actualizar.php" class="card-link">Actualizar datos</a>
     <a href="../paginashtml/main.php" class="card-link">volver</a>
   </div>
  

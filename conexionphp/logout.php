@@ -12,17 +12,6 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-echo'<script type="text/javascript" language="javascript">
-
-if(confirm("Seguro que quiere salir?")){
-   
-location.href = "../index.html"}
-else 
-{
-    
-  
-location.href = "../paginashtml/main.php"}
-</script>';
-
+header("Location:../index.html");
 
 ?>

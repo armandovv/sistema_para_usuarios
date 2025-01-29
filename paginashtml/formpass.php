@@ -130,7 +130,7 @@ return false;
           <a
            class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="../images/User_icon_2.svg.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> <?php echo
-$_SESSION["nameuser"];?>
+ ucwords($_SESSION["nameuser"]);?>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../conexionphp/perfil.php">Perfil</a></li>

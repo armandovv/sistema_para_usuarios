@@ -20,19 +20,19 @@ $result=mysqli_query($mysqli, $sql);
 $mostrar=mysqli_fetch_array($result);
 
 $fecha = $_POST['fecha'];
-$sql = "select distinct month(fecha) from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$sql = "select distinct month(fecha) from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)>= 2025 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
 setlocale(LC_ALL, 'spanish');
 $monthNum  = $fecha;
 $dateObj   = DateTime::createFromFormat('!m', $monthNum);
 $monthName = strftime('%B', $dateObj->getTimestamp());
-$sql1 = "SELECT sum(valor_a_retirar) from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where  year(fecha)>= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$sql1 = "SELECT sum(valor_a_retirar) from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where  year(fecha)>= 2025 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
 $sql2="select sum(valor_a_ahorrar)-sum(valor_a_retirar) as saldo from login_usuario inner join ahorros on ahorros.usuario=login_usuario.id where login_usuario.id='".$_SESSION['id']."'";
 $result1=mysqli_query($mysqli, $sql1);
 $result2=mysqli_query($mysqli, $sql2);
 
 $mostrar1=mysqli_fetch_array($result1);
 $mostrar2=mysqli_fetch_array($result2);
-$sql3 = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)= 2024 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
+$sql3 = "select *from login_usuario inner join ahorros on ahorros.usuario= login_usuario.id where year(fecha)= 2025 and month(fecha)='".$fecha."' and login_usuario.id='".$_SESSION['id']."'";
 $result3=mysqli_query($mysqli, $sql3); 
 
 // Crear una instancia de TCPDF

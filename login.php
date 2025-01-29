@@ -129,7 +129,7 @@ if (isset($_POST['login_button'])) {
       <div class="contact-form">
         <!-- <h3>Contactanos</h3> -->
         <img src="./images/logo empresa pequeño.png" class="im1">
-        <form action="login.php" method="post" >
+        <form action="login.php" method="post">
           <p>
             <label for="fullname"><strong>Documento</strong></label>
             <input type="text" name="id" id="id" required/>
@@ -164,6 +164,6 @@ if (isset($_POST['login_button'])) {
   </section>
   <script src="./js/recuperar.js"></script>
   <script src="./js/crear.js"></script>
-            
+ 
 </body>
 </html>
