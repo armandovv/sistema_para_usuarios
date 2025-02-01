@@ -68,7 +68,45 @@ function maskDocumentNumber($number, $string='****') {
 .card {
 	margin-left: auto;
     margin-right: auto;}
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+    }
 
+    .modal-content {
+      background-color:rgb(214, 192, 192);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 40%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      
+    }
+    .ref{   color:rgb(62, 15, 216);
+	text-decoration-line: underline;
+	cursor:pointer;
+}
 </style>
 
  </head>
@@ -86,13 +124,55 @@ function maskDocumentNumber($number, $string='****') {
     <li class="list-group-item">Telefono de contacto <?php echo maskDocumentNumber($mostrar['telefono']);?></li>
   </ul>
   <div class="card-body">
-    <a href="actualizar.php" class="card-link">Actualizar datos</a>
+  <a class="ref" id="myBtn">Actualizar datos</a> &nbsp;  &nbsp;
     <a href="../paginashtml/main.php" class="card-link">volver</a>
   </div>
  
 </div>
+<<div id="myModal" class="modal">
 
+<!-- Contenido del Modal -->
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <form action="verify_pass.php" method="post">
+   
+    <img src="../images/bloquear - copia.png" alt="Descripción de la imagen" style="width:50%; max-width:50px; display:block; margin:auto;">
+    <h3>Validación de Contraseña</h3> <!-- Imagen agregada -->
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="contraseña">
+    <input type="submit" value="Enviar">
+  </form>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>   
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
+<script>
+  // Obtener el modal
+  var modal = document.getElementById("myModal");
+
+  // Obtener el botón que abre el modal
+  var btn = document.getElementById("myBtn");
+
+  // Obtener el elemento <span> que cierra el modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // Cuando el usuario hace clic en el botón, abrir el modal 
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // Cuando el usuario hace clic en <span> (x), cerrar el modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // Cuando el usuario hace clic en cualquier lugar fuera del modal, cerrarlo
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
 </body>
 </html>

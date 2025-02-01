@@ -20,13 +20,8 @@ $sql="select*from login_usuario inner join usuarios on usuarios.documento = logi
 $result=mysqli_query($conn, $sql);
 if($result->num_rows > 0){
 $mostrar=mysqli_fetch_array($result);
-// Función para ocultar los primeros dígitos del número de documento
-function maskDocumentNumber($documento) {
-  
-  $maskLength = strlen($documento) - 5;
-  return str_repeat('*', $maskLength) . substr($documento, -5);
 }
-  }
+
   if(isset($_SESSION['time']) ) {
 
     //Tiempo en segundos para dar vida a la sesión.
