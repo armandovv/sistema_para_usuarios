@@ -133,11 +133,28 @@ const ahorrado = {
             });
         
     </script>
-    
-   
-     <a href='../paginashtml/main.php'> <button class="btn btn-sm btn-primary" type="button">VOLVER A RESUMEN</button></a>
+ <form method="POST" action="grafica.php">
+    <label for="mes">Selecciona el mes:</label>
+    <select name="mes" id="mes">
+        <option value="1">Enero</option>
+        <option value="2">Febrero</option>
+        <option value="3">Marzo</option>
+        <option value="4">Abril</option>
+        <option value="5">Mayo</option>
+        <option value="6">Junio</option>
+        <option value="7">Julio</option>
+        <option value="8">Agosto</option>
+        <option value="9">Septiembre</option>
+        <option value="10">Octubre</option>
+        <option value="11">Noviembre</option>
+        <option value="12">Diciembre</option>
+    </select>
+    <button class="btn btn-sm btn-primary" type="submit">ver comportamiento</button><br>
+    <a href='../paginashtml/main.php'> <button class="btn btn-sm btn-primary" type="button">VOLVER A RESUMEN</button></a>
+</form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> <br>
+    
 </body>
 
 </html>

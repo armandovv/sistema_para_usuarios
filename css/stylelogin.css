@@ -2,26 +2,26 @@ body{
    
    
     
-    background: url('../images/captura-de-pantalla-2023-11-03-a-les-15.20.07.png')no-repeat center center fixed; 
+    background: url('../images/pngtree-line-blue-technology-line-gray-and-white-simple-banner-image_812173.jpg')no-repeat center center fixed; 
    
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    backdrop-filter: grayscale(40%);
+    backdrop-filter: grayscale(90%);
  
 }
 .title{
 
     font-family: fantasy;
     font-weight: 600;
-    color:  #b80e41;
+    color:  #484b90;
     text-align: center;
 }
 .description{
 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 font-weight: 600;
-color: #b80e41;
+color: #484b90;
 text-align:center;
 }
 
@@ -35,7 +35,7 @@ text-align:center;
     margin-left: auto;
     margin-right: auto;
     
-    margin-bottom: auto;
+   
     
 }
 
@@ -44,7 +44,7 @@ text-align:center;
 
 
 .contact-wrapper {
-    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.397);
+    box-shadow: 0 0 20px 0 rgba(227, 181, 181, 0.397);
     
 }
 
@@ -59,12 +59,12 @@ text-align:center;
 
 
 .contact-form {
-    background-color:  rgba(248, 253, 255, 0.464);
+    background-color:  rgba(148, 216, 226, 0.201);
      
     border-width: 2px;
   border-style: solid;
   border-color:#d63031;
-  border-radius: 10%;
+ 
  
 }
 
@@ -76,7 +76,7 @@ text-align:center;
 .contact-form form button,
 .contact-form form input {
     width: 100%;
-    padding: .7em;
+    padding: .6em;
     border: none;
     background: none;
     outline: 0;

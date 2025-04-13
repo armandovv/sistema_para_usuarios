@@ -83,7 +83,7 @@ function maskDocumentNumber($number, $string='****') {
     }
 
     .modal-content {
-      background-color:rgb(214, 192, 192);
+      background-color:rgb(211, 202, 239);
       margin: 15% auto;
       padding: 20px;
       border: 1px solid #888;
