@@ -110,7 +110,7 @@ const ahorrado = {
 };
 
         new Chart($grafica, {
-            type: 'doughnut', // Tipo de gráfica
+            type: 'pie', // Tipo de gráfica
             data: {
                 labels: etiquetas,
                 datasets: [
